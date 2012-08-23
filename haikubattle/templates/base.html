@@ -31,7 +31,15 @@
         {% block extrahead %}{% endblock %}
     </head>
     <body>
-    <h1 id="header">Haiku Battle</h1>
+    <div id="header">
+        <h1>Haiku Battle</h1>
+        {% if user.is_authenticated %}
+            Hello {{ user.username }}
+            <a href="{% url django.contrib.auth.views.logout %}?next={{request.path|default:'/'}}">Log Out</a>
+        {% else %}
+            <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}">Log In</a>
+        {% endif %}
+    </div>
     {% block content %}
     {% endblock %}
     {% block extrabody %}
