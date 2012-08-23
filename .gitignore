@@ -3,3 +3,5 @@ venv
 .idea/*
 *.orig
 .hg/*
+settings_local.py
+
