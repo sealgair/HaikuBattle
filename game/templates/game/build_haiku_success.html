@@ -1,0 +1,10 @@
+{% extends "game/game.html" %}
+
+{% block game_content %}
+    You submitted <div class="haiku">{{ haiku.as_br|safe }}</div></br>
+    {% if game.current_turn.still_waiting %}
+        Waiting for {{ game.pending_players|length }} other players.
+    {% else %}
+        Waiting for judge
+    {% endif %}
+{% endblock %}

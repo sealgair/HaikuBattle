@@ -1,0 +1,32 @@
+{% extends "game/game.html" %}
+{% block title %}Manage Your Games{% endblock %}
+{% block extrahead %}
+    <style type="text/css">
+        table, tr, td, th {border: 1px solid black;}
+        th {text-align: center; padding: 10px;}
+        td {text-align: right; padding: 5px;}
+    </style>
+{% endblock %}
+{% block content %}
+{% if player_games %}
+<h3>Your current games:</h3>
+<table><tr><th>Your Score</th><th>Your Turn?</th></tr>
+{% for player in player_games %}
+    <tr><td>{{ player.score }}</td>
+        <td>{% if player.turn_order == player.game.current_turn %}
+            <a href="{% url game.views.game game_id=player.game.id %}">Yes!</a>{% else %}
+            No.{% endif %}
+        </td></tr>{% endfor %}
+</table>{% else %}
+<h3>No Current Games!</h3></br></br>{% endif %}
+<h3>Create a New Game!</h3>
+<form action="." method="post">{% csrf_token %}
+    <table>
+        {{ game_formset.as_table }}
+        <tr>
+            <th></th>
+            <td><input type="submit" name="submit" value="Submit" class="button"></td>
+        </tr>
+    </table>
+</form>
+{% endblock %}

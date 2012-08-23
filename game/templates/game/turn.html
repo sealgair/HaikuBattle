@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block extrahead %}
+<style>
+    #turn {
+        padding: 1em 2em;
+    }
+    .haiku {
+        float: left;
+        clear: both;
+        margin-bottom: 1em;
+    }
+    .winner {
+        float: left;
+        clear: both;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<a href="{% url game.views.game game_id=game.id %}">Back to game</a>
+<div id="turn">
+    {% for haiku in turn.haiku_set.all %}
+        {% if turn.winner == haiku %}<span class="winner">Winner:</span>{% endif %}
+        <div class="haiku">
+            {{ haiku.as_br|safe }}
+            <span class="author">{{ haiku.player.user.username }}</span>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

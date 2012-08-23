@@ -1,0 +1,90 @@
+{% extends "game/game.html" %}
+
+{% block extrahead %}
+{{ block.super }}
+<style>
+    #hand {
+        background-color: #eee8aa;
+    }
+    .phrase {
+        color: #fafad2;
+        background-color: #008800;
+        margin: 1em;
+        padding: .25em .5em;
+    }
+    .phrase.syllable-7 {
+        background-color: #005500;
+    }
+    #haiku {
+        border: 2px solid #006400;
+        background-color: #eee8aa;
+        height: 9em;
+        margin-bottom: 1em;
+        overflow: hidden;
+    }
+    ul.phraseholder {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+{% endblock %}
+
+
+{% block game_content %}
+<h2>Build Your Haiku</h2>
+<form method="post" action=""> {% csrf_token %}
+    <ul id="haiku" class="phraseholder"></ul>
+    <input type=submit value="Ready!"/>
+
+    <ul id="hand"class="phraseholder">
+    {% for phrase in player.hand.all %}
+        <li class="phrase syllable-{{ phrase.syllables }}">
+            {{ phrase }}
+            <input type="hidden" value="{{ phrase.id }}"/>
+        </li>
+    {% endfor %}
+    </ul>
+</form>
+{% endblock %}
+
+{% block extrabody %}
+{{ block.super }}
+<script>
+    function sortHaiku() {
+        if ($("#haiku").find(".phrase").length == 3) {
+            //there's a chance the 7 isn't in the middle
+            var syl7 = $("#haiku").find(".phrase.syllable-7");
+            var syl5 = $("#haiku").find(".phrase.syllable-5");
+            var newOrder = [syl5[0], syl7[0], syl5[1]];
+
+            $("#haiku").find(".phrase").replaceWith($(newOrder).clone());
+        }
+
+        //set form name correctly
+        $("#haiku").find(".phrase input").each(function(i, input) {
+            var nm = "phrase"+(i+1);
+            $(input).attr("name", nm);
+        });
+    }
+
+    $('#haiku, #hand').sortable({connectWith: ".phraseholder", revert: 100});
+    $('#haiku').bind("sortreceive", function(event, ui) {
+        var count;
+        var sylClass;
+        var phrase = $(event.srcElement);
+        if (phrase.hasClass("syllable-7")) {
+            sylClass = ".syllable-7";
+            count = 1;
+        } else {
+            sylClass = ".syllable-5";
+            count = 2;
+        }
+        if ($(this).find(sylClass).length > count) {
+            $(ui.sender).sortable('cancel');
+        }
+        sortHaiku();
+    });
+    $('#haiku').bind("sortstop", sortHaiku);
+</script>
+{% endblock %}

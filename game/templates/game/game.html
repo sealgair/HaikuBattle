@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+<style xmlns="http://www.w3.org/1999/html">
+    #game-sidebar {
+        float: left;
+        border: 2px solid #006400;
+        margin: 1em;
+        padding: 0 2em;
+    }
+    #game {
+        float: left;
+        margin-top: 1em;
+    }
+    .judge {
+        font-weight: bold;
+        color: #8b0000;
+    }
+    .turn-num {
+        margin-bottom: 0;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="game-sidebar">
+    <h3>Players:</h3>
+    <ul>
+    {% for player in game.players.all %}
+        {% if game.judge == player %}
+        <li class="judge">{{ player.user.username }} (judge)</li>
+        {% else %}
+        <li>{{ player.user.username }}{% if player in game.pending_players %} (composing...){% endif %}</li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+    {% if game.last_winning_haiku %}
+    <hr/>
+    Winners:
+    {% for turn in game.past_turns %}
+        <h4 class="turn-num"><a href="{% url game.views.turn turn_id=turn.id %}">Turn {{ turn.number }}:</a></h4>
+        <div class="haiku">
+        {{ turn.winner.as_br|safe }}
+        <span class="author">{{ turn.winner.player.user.username }}</span>
+        </div>
+    {% endfor %}
+    {% endif %}
+
+</div>
+<div id="game">
+    {% block game_content %}
+    {% endblock %}
+</div>
+{% endblock %}

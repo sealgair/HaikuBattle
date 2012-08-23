@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}Hiaku Battle{% endblock %}</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            #header {
+                color: #fafad2;
+                background-color: #006400;
+                width: 100%;
+                padding: .5em 3em;
+                margin: 0;
+            }
+            .haiku {
+                font-style: italic;
+                color: #666;
+            }
+            .haiku .author {
+                float: left;
+                padding-left: 2em;
+            }
+            .haiku .author:before {
+                content: "- ";
+            }
+        </style>
+        {% block extrahead %}{% endblock %}
+    </head>
+    <body>
+    <h1 id="header">Haiku Battle</h1>
+    {% block content %}
+    {% endblock %}
+    {% block extrabody %}
+    {% endblock %}
+    </body>
+</html>

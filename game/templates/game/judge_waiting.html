@@ -1,0 +1,15 @@
+{% extends "game/game.html" %}
+
+{% block game_content %}
+    <h2>Pick The Best Haiku</h2>
+    {% if game.current_turn.still_waiting %}
+        Waiting for {{ game.current_turn.waiting_count }} players.
+    {% else %}
+    <form method="post" action=""> {% csrf_token %}
+        <ul>
+            {{ form.as_ul }}
+        </ul>
+        <input type=submit value="This one"/>
+    </form>
+    {% endif %}
+{% endblock %}
