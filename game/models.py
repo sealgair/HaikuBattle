@@ -96,7 +96,6 @@ class Player(models.Model):
     """
     user = models.ForeignKey(User)
     game = models.ForeignKey(Game, related_name="players")
-    score = models.IntegerField(default=0)
     turn_order = models.IntegerField()
     hand = models.ManyToManyField(Phrase)
 
@@ -105,6 +104,10 @@ class Player(models.Model):
             ("user", "game"),
             ("user", "game", "turn_order")
         )
+
+    @property
+    def score(self):
+        return self.won_turns.count()
 
     def save(self, *args, **kwargs):
         if self.turn_order is None:
