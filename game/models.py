@@ -42,14 +42,13 @@ class Game(models.Model):
         return self.current_turn.judge
 
     def advance_turn(self):
-        current_turn = self.current_turn
-        if current_turn.winner:
+        if self.current_turn.winner:
             self.turns.create(number=current_turn.number+1)
             this_turn = self.players.aggregate(t=models.Min('turn_order'))['t']
             try:
-                self.turn.judge = self.players.get(turn_order=this_turn+1)
+                self.current_turn.judge = self.players.get(turn_order=this_turn+1)
             except Player.DoesNotExist:
-                self.turn.judge = self.players.get(turn_order=0)
+                self.current_turn.judge = self.players.get(turn_order=0)
             self.save()
 
     def last_winning_haiku(self):
