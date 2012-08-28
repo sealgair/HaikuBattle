@@ -28,9 +28,9 @@
     <ul>
     {% for player in game.players.all %}
         {% if game.judge == player %}
-        <li class="judge">{{ player.user.username }} (judge)</li>
+        <li class="judge">{{ player.user.username }}[{{ player.score }}] (judge)</li>
         {% else %}
-        <li>{{ player.user.username }}{% if player in game.pending_players %} (composing...){% endif %}</li>
+        <li>{{ player.user.username }}[{{ player.score }}]{% if player in game.pending_players %} (composing...){% endif %}</li>
         {% endif %}
     {% endfor %}
     </ul>
