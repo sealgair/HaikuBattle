@@ -11,7 +11,7 @@ class DictionaryAdmin(admin.ModelAdmin):
 
 class PlayerInline(admin.TabularInline):
     model = Player
-    exclude = ['turn_order', 'score', 'hand']
+    exclude = ['turn_order', 'hand']
 
 class GameAdmin(admin.ModelAdmin):
     inlines = [PlayerInline]
