@@ -11,6 +11,9 @@ class Dictionary(models.Model):
     """
     name = models.CharField(max_length=256)
 
+    def __unicode__(self):
+        return self.name
+
 class Phrase(models.Model):
     """
     """
