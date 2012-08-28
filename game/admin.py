@@ -15,7 +15,6 @@ class PlayerInline(admin.TabularInline):
 
 class GameAdmin(admin.ModelAdmin):
     inlines = [PlayerInline]
-    exclude = ['judge']
 
 admin.site.register(Dictionary, DictionaryAdmin)
 admin.site.register(Game, GameAdmin)
