@@ -46,7 +46,7 @@ class Game(models.Model):
 
     def advance_turn(self):
         if self.current_turn.winner:
-            self.turns.create(number=current_turn.number+1)
+            self.turns.create(number=self.current_turn.number+1)
             this_turn = self.players.aggregate(t=models.Min('turn_order'))['t']
             try:
                 self.current_turn.judge = self.players.get(turn_order=this_turn+1)
