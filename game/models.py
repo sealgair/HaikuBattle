@@ -24,7 +24,6 @@ class Phrase(models.Model):
 class Game(models.Model):
     """
     """
-    judge = models.ForeignKey("Player", related_name="judged_game", null=True)
 
     def save(self, *args, **kwargs):
         if self.id and self.judge is None:
@@ -38,9 +37,13 @@ class Game(models.Model):
     def current_turn(self):
         return self.turns.order_by('-number')[0]
 
+    @property
+    def judge(self):
+        return self.current_turn.judge
+
     def advance_turn(self):
         current_turn = self.current_turn
-        if current_turn.winner is not None:
+        if current_turn.winner:
             self.turns.create(number=current_turn.number+1)
             this_turn = self.players.aggregate(t=models.Min('turn_order'))['t']
             try:
