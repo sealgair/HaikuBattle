@@ -12,11 +12,11 @@
 <h3>Your current games:</h3>
 <table><tr><th>Your Score</th><th>Your Turn?</th></tr>
 {% for player in player_games %}
-    <tr><td>{{ player.score }}</td>
-        <td>{% if player.turn_order == player.game.current_turn %}
-            <a href="{% url game.views.game game_id=player.game.id %}">Yes!</a>{% else %}
+    <tr><td><a href="{% url game.views.game game_id=player.game_id %}"><div>{{ player.score }}</div></a></td>
+        <td><a href="{% url game.views.game game_id=player.game_id %}"><div>
+            {% if player.turn_order == player.game.current_turn %}Yes!{% else %}
             No.{% endif %}
-        </td></tr>{% endfor %}
+        </div></a></td></tr>{% endfor %}
 </table>{% else %}
 <h3>No Current Games!</h3></br></br>{% endif %}
 <h3>Create a New Game!</h3>
