@@ -34,7 +34,7 @@ class BuildHaikuForm(forms.ModelForm):
 
 class ChooseHaikuForm(forms.Form):
     choices = forms.ModelChoiceField(
-        queryset=Haiku.objects.all(),
+        queryset=Haiku.objects.order_by('?'),
         empty_label=None,
         widget=RadioSelect
     )
