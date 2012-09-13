@@ -36,16 +36,16 @@
 <form method="post" action=""> {% csrf_token %}
     <ul id="haiku" class="phraseholder"></ul>
     <input type=submit value="Ready!"/>
-
-    <ul id="hand"class="phraseholder">
-    {% for phrase in player.hand.all %}
-        <li class="phrase syllable-{{ phrase.syllables }}">
-            {{ phrase }}
-            <input type="hidden" value="{{ phrase.id }}"/>
-        </li>
-    {% endfor %}
-    </ul>
 </form>
+
+<ul id="hand"class="phraseholder">
+    {% for phrase in player.hand.all %}
+    <li class="phrase syllable-{{ phrase.syllables }}">
+        {{ phrase }}
+        <input type="hidden" value="{{ phrase.id }}"/>
+    </li>
+    {% endfor %}
+</ul>
 {% endblock %}
 
 {% block extrabody %}
@@ -86,7 +86,5 @@
         sortHaiku();
     });
     $('#haiku').bind("sortstop", sortHaiku);
-    $('#haiku').bind("sortupdate", sortHaiku);
-    $('#haiku').bind("sortreceive", sortHaiku);
 </script>
 {% endblock %}
