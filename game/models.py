@@ -122,7 +122,7 @@ class Player(models.Model):
 
     @property
     def score(self):
-        return self.won_turns.count() or 0
+        return Turn.objects.filter(winner__player=self).count()
 
     def save(self, *args, **kwargs):
         if self.turn_order is None:
