@@ -2,21 +2,56 @@
 {% block title %}Manage Your Games{% endblock %}
 {% block extrahead %}
     <style type="text/css">
-        table, tr, td, th {border: 1px solid black;}
-        th {text-align: center; padding: 10px;}
-        td {text-align: right; padding: 5px;}
+        #dashboard-wrapper {
+            margin: 1em;
+            padding: 2em 2em;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        #dashboard-content {
+            border: 2px solid #006400;
+            padding: 2em;
+            display: inline-block;
+            margin: 0 auto;
+        }
+        table {
+            padding-bottom: 2em;
+            margin: 0 auto;
+        }
+        td, th {
+            border-bottom: 1px solid black;
+        }
+        th {
+            text-align: center;
+            padding: 10px;
+        }
+        td {
+            text-align: right;
+            padding: 5px;
+            width: auto;
+        }
+        td a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: black;
+        }
     </style>
 {% endblock %}
 {% block content %}
 {% if player_games %}
+<div id="dashboard-wrapper"><span id="dashboard-content">
 <h3>Your current games:</h3>
-<table><tr><th>Your Score</th><th>Your Turn?</th></tr>
+<table><tr><th>Score</th><th>Your Turn to Judge?</th></tr>
 {% for player in player_games %}
-    <tr><td>{{ player.score }}</td>
-        <td>{% if player.turn_order == player.game.current_turn %}
-            <a href="{% url game.views.game game_id=player.game.id %}">Yes!</a>{% else %}
+    <tr><td><a href="{% url game.views.game game_id=player.game_id %}">
+        {%  if player.score > 0 %}{{ player.score }}{% else %}0{% endif %}</a></td>
+        <td><a href="{% url game.views.game game_id=player.game_id %}">
+            {% if player.turn_order == player.game.current_turn %}Yes!{% else %}
             No.{% endif %}
-        </td></tr>{% endfor %}
+        </a></td></tr>{% endfor %}
 </table>{% else %}
 <h3>No Current Games!</h3></br></br>{% endif %}
 <h3>Create a New Game!</h3>
@@ -28,5 +63,5 @@
             <td><input type="submit" name="submit" value="Submit" class="button"></td>
         </tr>
     </table>
-</form>
+</form></span></div>
 {% endblock %}

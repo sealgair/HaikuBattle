@@ -2,3 +2,4 @@ syntax: glob
 *.pyc
 .idea/*
 *.orig
+settings_local.py
