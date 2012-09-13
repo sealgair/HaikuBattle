@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import Min
 
 SYLLABLE_AMOUNTS = {
     5: 16,
@@ -29,20 +30,28 @@ class Game(models.Model):
     """
 
     def save(self, *args, **kwargs):
-        if self.id and self.judge is None:
-            first_turn = self.players.aggregate(t=models.Min('turn_order'))['t']
-            self.judge = self.players.get(turn_order=first_turn)
         super(Game, self).save(*args, **kwargs)
-        if not self.turns.exists():
+        if self.players.count() > 0 and not self.turns.exists():
             self.turns.create(number=1)
 
     @property
     def current_turn(self):
-        return self.turns.order_by('-number')[0]
+        if self.turns.exists():
+            return self.turns.order_by('-number')[0]
 
     @property
     def judge(self):
-        return self.current_turn.judge
+        if self.current_turn:
+            return self.current_turn.judge
+
+    @property
+    def next_judge(self):
+        if self.players.exists():
+            if self.judge:
+                next_turn = self.judge.turn_order + 1
+            else:
+                next_turn = self.players.aggregate(t=Min('turn_order'))['t']
+            return self.players.get(turn_order=next_turn)
 
     def advance_turn(self):
         if self.current_turn.winner:
@@ -83,12 +92,12 @@ class Turn(models.Model):
 
     def advance(self, winning_haiku):
         self.winner = winning_haiku
-        self.judge = self.game.judge
         self.save()
         self.game.advance_turn()
 
     def save(self, *args, **kwargs):
-        self.judge = self.game.judge
+        if not self.judge:
+            self.judge = self.game.next_judge
         super(Turn, self).save(*args, **kwargs)
 
 class Player(models.Model):
