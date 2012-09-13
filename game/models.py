@@ -47,10 +47,13 @@ class Game(models.Model):
     @property
     def next_judge(self):
         if self.players.exists():
+            first_turn = self.players.aggregate(t=Min('turn_order'))['t']
             if self.judge:
                 next_turn = self.judge.turn_order + 1
+                if not self.players.filter(turn_order=next_turn).exists():
+                    next_turn = first_turn
             else:
-                next_turn = self.players.aggregate(t=Min('turn_order'))['t']
+                next_turn = first_turn
             return self.players.get(turn_order=next_turn)
 
     def advance_turn(self):
