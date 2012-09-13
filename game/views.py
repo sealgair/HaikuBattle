@@ -1,11 +1,9 @@
 from django import forms
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
-from django.forms.widgets import RadioSelect, RadioFieldRenderer
+from django.forms.widgets import RadioSelect
 from django.shortcuts import get_object_or_404, render_to_response, redirect
 from django.template.context import RequestContext
-from django.utils.encoding import force_unicode
-from django.utils.safestring import mark_safe
 from game.models import Game, Player, Haiku, Turn
 
 class BuildHaikuForm(forms.ModelForm):

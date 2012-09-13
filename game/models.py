@@ -63,6 +63,9 @@ class Game(models.Model):
                 self.current_turn.judge = self.players.get(turn_order=0)
             self.save()
 
+            for player in self.players.all():
+                player.save() #rebuild hands
+
     def last_winning_haiku(self):
         if self.turns.count() > 1:
             last_turn = self.turns.order_by('-number')[1]
