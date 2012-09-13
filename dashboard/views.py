@@ -21,6 +21,7 @@ def player_dashboard(request):
         if game_formset.is_valid():
             game.save()
             game_formset.save()
+            game.save() #again, to populate the game's data with the new players
             response = redirect(reverse('game.views.game', kwargs={'game_id': game.id}))
     elif request.method == "GET":
         game_formset = GameInlineFormset(instance=Game())
