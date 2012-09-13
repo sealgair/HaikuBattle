@@ -145,10 +145,10 @@ class Haiku(models.Model):
     phrase3 = models.ForeignKey(Phrase, related_name="haiku_phrase3", null=True)
 
     def __unicode__(self):
-        return "{0} / {1} / {2}".format(self.phrase1, self.phrase2, self.phrase3)
+        return u"{0} / {1} / {2}".format(self.phrase1, self.phrase2, self.phrase3)
 
     def as_br(self):
-        return "{0}<br/>{1}</br>{2}</br>".format(self.phrase1, self.phrase2, self.phrase3)
+        return u"{0}<br/>{1}</br>{2}</br>".format(self.phrase1, self.phrase2, self.phrase3)
 
     class Meta:
         unique_together = [
