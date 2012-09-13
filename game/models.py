@@ -28,6 +28,7 @@ class Phrase(models.Model):
 class Game(models.Model):
     """
     """
+    seen_phrases = models.ManyToManyField(Phrase, related_name="seen_by")
 
     def save(self, *args, **kwargs):
         super(Game, self).save(*args, **kwargs)
@@ -55,6 +56,9 @@ class Game(models.Model):
             else:
                 next_turn = first_turn
             return self.players.get(turn_order=next_turn)
+
+    def available_phrases(self):
+        return Phrase.objects.exclude(seen_by=self)
 
     def advance_turn(self):
         if self.current_turn.winner:
@@ -124,6 +128,16 @@ class Player(models.Model):
     def score(self):
         return Turn.objects.filter(winner__player=self).count()
 
+    def fill_hand(self):
+        for s in (5,7):
+            while self.hand.filter(syllables=s).count() < SYLLABLE_AMOUNTS[s]:
+                potentials = self.game.available_phrases().filter(syllables=s)
+                if potentials:
+                    new_phrase = potentials.order_by('?')[0]
+                    self.hand.add(new_phrase)
+                    self.game.seen_phrases.add(new_phrase)
+                else: return
+
     def save(self, *args, **kwargs):
         if self.turn_order is None:
             self.turn_order = self.game.players.aggregate(m=models.Max('turn_order'))['m'] or 0
@@ -131,12 +145,7 @@ class Player(models.Model):
 
         super(Player, self).save(*args, **kwargs)
 
-        for s in (5,7):
-            while self.hand.filter(syllables=s).count() < SYLLABLE_AMOUNTS[s]:
-                potentials = Phrase.objects.filter(syllables=s).exclude(id__in=self.hand.all())
-                if potentials:
-                    self.hand.add(potentials.order_by('?')[0])
-                else: return
+        self.fill_hand()
 
 class Haiku(models.Model):
     """

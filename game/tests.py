@@ -37,6 +37,7 @@ class TestGame(TestCase):
         self.assertEqual("user0", game.judge.user.username)
         for player in game.players.all():
             self.assertEqual(24, player.hand.count())
+        self.assertEqual(24*5, game.seen_phrases.count())
 
         # play a round
         self.assertEqual(4, game.pending_players().count())
@@ -57,3 +58,4 @@ class TestGame(TestCase):
         self.assertEqual("user1", game.judge.user.username)
         for player in game.players.all():
             self.assertEqual(24, player.hand.count())
+        self.assertEqual(27*4 + 24, game.seen_phrases.count())
