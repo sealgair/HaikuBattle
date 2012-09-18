@@ -25,6 +25,9 @@ class Phrase(models.Model):
     def __unicode__(self):
         return self.text
 
+    class Meta:
+        order_by = ['syllables', 'id']
+
 class Game(models.Model):
     """
     """
