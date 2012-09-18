@@ -406,188 +406,8 @@
     "pk": 45, 
     "model": "game.phrase", 
     "fields": {
-      "text": "bottomless margaritas", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 46, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "punch his skull out of his face", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 47, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "i don't like you in that way", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 48, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "parent teacher conference", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 49, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "all good things come to an end", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 50, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "rock and roll fantasy camp", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 51, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "from hells heart, I stab at thee", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 52, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "something wicked this way comes", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 53, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "inappropriate grandpa", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 54, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "sasquatch made me these pancakes", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 55, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "can anyone fly this thing?", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 56, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "whiskey is the solution", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 57, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "sudo make me a sandwich", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 58, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "held together by waffles", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 59, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "duct tape my heart together", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 60, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "throw a bag over those wounds", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 61, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "that's just my service tumor", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 62, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "random acts of violence", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 63, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "the sound of one hand clapping", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 64, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "everybody was kung fu", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 65, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "applebottom bikini", 
-      "syllables": 7, 
+      "text": "I don't remember", 
+      "syllables": 5, 
       "dictionary": 1
     }
   }, 
@@ -601,47 +421,11 @@
     }
   }, 
   {
-    "pk": 67, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "who's eating my banana?", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 68, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "how do you spell \"hye-ah-koo\"?", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
     "pk": 69, 
     "model": "game.phrase", 
     "fields": {
       "text": "Hitler thinks I'm cute", 
       "syllables": 5, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 70, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "hello my future girlfriend", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 71, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "feeding beer to animals", 
-      "syllables": 7, 
       "dictionary": 1
     }
   }, 
@@ -700,24 +484,6 @@
     }
   }, 
   {
-    "pk": 78, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "la la la la la la la", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 79, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "There's hookers in them thar hills", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
     "pk": 81, 
     "model": "game.phrase", 
     "fields": {
@@ -732,51 +498,6 @@
     "fields": {
       "text": "blatant racism", 
       "syllables": 5, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 83, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "racist after whiskey", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 84, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "here are your five syllables", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 85, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "but she said it's a good size", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 86, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "the red pill or the blue pill?", 
-      "syllables": 7, 
-      "dictionary": 1
-    }
-  }, 
-  {
-    "pk": 87, 
-    "model": "game.phrase", 
-    "fields": {
-      "text": "caress the meaty mutant", 
-      "syllables": 7, 
       "dictionary": 1
     }
   }, 
@@ -808,10 +529,1126 @@
     }
   }, 
   {
+    "pk": 93, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "hamburgle my heart", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 95, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "that's my great-grampire", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 96, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "he'll eat your face off", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 101, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "plus five sword of death", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 103, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "raccoons on acid", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 104, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "nudist colony", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 115, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "now get me a beer", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 116, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "gangrene is your friend", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 117, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "she won't believe me", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 119, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "rhinocerous jizz", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 121, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "pirate radio", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 123, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "go back to bed, son", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 124, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "step right up sir, and", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 125, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "plant your face in this", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 126, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "Anti gravity", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 127, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "drunken frisbee golf", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 129, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "tell me a story", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 135, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "Open your pie hole", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 136, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "He knows how to read", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 137, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "Ha ha ha ha ha", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 138, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "We need more power", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 139, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "Shiny soap bubbles", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 140, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "Mustache etiquette", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 141, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "It was a close match", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 142, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "Bird brain cellophane", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 143, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "Useful for food stuff", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 144, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "Uh, yeah... and uh... stuff", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 145, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "Grampire dentures", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 146, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "Kids these days, they're as", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 149, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "put it in your mouth", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 150, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "lottery dollars", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 152, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "then I found Jesus", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 153, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "whiskey for breakfast", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 155, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "quick, follow that car!", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 157, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "one syllable off", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 160, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "my mom was a train", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 161, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "bad edamame", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 162, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "cheese cheese cheese cheese cheese", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 164, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "the faces of meth", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 165, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "Living with the 'rents", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 166, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "ready for prime time", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 167, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "shiver me timbers", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 169, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "vomit in the vase", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 170, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "high speed police chase", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 172, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "one, two, three.  three bats!", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 173, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "eat a termite, mom", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 174, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "I hope that's cat food", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 177, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "wait. Pull my finger", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 178, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "that's racist as hell", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 179, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "suck my urethra", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 180, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "vegan agenda", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 181, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "help! I'm stuck in a", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 182, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "anti-fun device", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 183, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "never forget: balls", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 186, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "fine dumpster dining", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 187, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "pour salt in the wounds", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 188, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "pelvic thrust to work", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 189, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "deep sea muff diver", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 190, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "suppository", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 191, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "handicapped parking", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 193, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "schadenfreude, boy", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 195, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "then she blew my mind", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 196, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "jump start my nipples", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 197, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "altar boy fetish", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 198, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "fellate the rainbow", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 199, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "and for my next trick", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 200, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "lame super power", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 201, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "satisfying dump", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 202, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "Quiet village streets", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 203, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "left-handed bowler", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 204, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "must be muskrat love", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 205, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "the stinky-cheese man", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 206, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "flying bird at dusk", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 207, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "just autotune it", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 209, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "Go Magikarp, splash!", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 210, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "get a contact high", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 211, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "back in Vietnam", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 212, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "Neil deGrasse Tyson", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 213, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "hippy dippy do", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 214, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "Nikola Tesla", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 215, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "nyquil overdose", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 216, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "charred roadkill entree", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 217, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "fuzzy math teacher", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 218, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "wear a bikini", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 219, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "a world of difference", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 220, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "core competency", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 221, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "the sky is burning", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 222, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "tastes like ovaltine", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 223, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "achey breaky balls", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 224, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "hamburger hot dog", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 225, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "I don't remember", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 226, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "I don't remember", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 227, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "people of wal-mart", 
+      "syllables": 5, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 46, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "bottomless margaritas", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 47, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "punch his skull out of his face", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 48, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "i don't like you in that way", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 49, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "parent teacher conference", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 50, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "all good things come to an end", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 51, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "rock and roll fantasy camp", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 52, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "from hells heart, I stab at thee", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 53, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "something wicked this way comes", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 54, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "inappropriate grandpa", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 55, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "sasquatch made me these pancakes", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 56, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "can anyone fly this thing?", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 57, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "whiskey is the solution", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 58, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "sudo make me a sandwich", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 59, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "held together by waffles", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 60, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "duct tape my heart together", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 61, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "throw a bag over those wounds", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 62, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "that's just my service tumor", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 63, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "random acts of violence", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 64, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "the sound of one hand clapping", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 65, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "everybody was kung fu", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 67, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "applebottom bikini", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 68, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "who's eating my banana?", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 70, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "how do you spell \"hye-ah-koo\"?", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 71, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "hello my future girlfriend", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 78, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "feeding beer to animals", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 79, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "la la la la la la la", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 83, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "There's hookers in them thar hills", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 84, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "racist after whiskey", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 85, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "here are your five syllables", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 86, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "but she said it's a good size", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 87, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "the red pill or the blue pill?", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
     "pk": 91, 
     "model": "game.phrase", 
     "fields": {
-      "text": "ultranationalistic", 
+      "text": "caress the meaty mutant", 
       "syllables": 7, 
       "dictionary": 1
     }
@@ -820,7 +1657,376 @@
     "pk": 92, 
     "model": "game.phrase", 
     "fields": {
+      "text": "ultranationalistic", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 94, 
+    "model": "game.phrase", 
+    "fields": {
       "text": "son of a granpa's denture", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 97, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "something torpid this way comes", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 98, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "and that makes it a haiku", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 99, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "I found your flute on the beach", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 100, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "terrifying fan fiction", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 102, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "I'm gonna take you to a", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 105, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "I am all out of sevens", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 106, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "something weird just happened", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 107, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "by C3PO's ballsack!", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 108, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "trundle my grundle", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 109, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "terrifying fan fiction", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 110, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "In the heart of bear country", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 111, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "Heavy metal teddy bear", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 112, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "The hull has been breached, captain", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 113, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "But the rainbow has a beard", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 114, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "Happens to the best of us", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 118, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "Is anyone keeping score?", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 120, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "I swallowed the jager bombs", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 122, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "whiskey 'till they're not ugly", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 128, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "ninjas! ninjas everywhere!", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 130, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "Far fetched animal craving", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 131, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "about cowboys and midgets", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 132, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "Not in Kansas anymore", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 133, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "That really was a cracker", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 134, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "Phospherescent creatures of", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 147, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "Just as the ducks do quest for", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 148, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "bestill my throbbing nethers", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 151, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "my barbie doll is racist", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 154, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "bestill my throbbing grandpa", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 156, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "cigarettes for cancer kids", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 158, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "put your finger in my mouth", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 159, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "unsolicited advice", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 163, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "dead porcupine throw pillow", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 171, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "uncomfortable back rub", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 175, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "Jar Jar Binks is my homeboy", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 176, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "anti-inflammatory", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 185, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "oh my goodness, oh my damn", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 192, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "silly string mortal combat", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 194, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "pissed my pants in sympathy", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 208, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "learned that one in the marines", 
+      "syllables": 7, 
+      "dictionary": 1
+    }
+  }, 
+  {
+    "pk": 228, 
+    "model": "game.phrase", 
+    "fields": {
+      "text": "should I have another beer?", 
       "syllables": 7, 
       "dictionary": 1
     }
