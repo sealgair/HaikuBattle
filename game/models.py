@@ -26,7 +26,7 @@ class Phrase(models.Model):
         return self.text
 
     class Meta:
-        order_by = ['syllables', 'id']
+        ordering = ['syllables', 'id']
 
 class Game(models.Model):
     """
