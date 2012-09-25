@@ -1,3 +1,5 @@
-You have activated your HaikuBattle account!
+Activate Haiku Battle account at:
 
-Grenadeosaurus Rex thanks you.
+http://haiku-battle.herokuapp.com{% url registration_activate activation_key %}
+
+Link is valid for {{ expiration_days }} days.
