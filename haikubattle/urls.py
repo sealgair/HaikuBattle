@@ -13,6 +13,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^game/', include(game.urls)),
     url(r'', include(dashboard.urls)),
-    url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
-    url(r'^accounts/logout/$', 'django.contrib.auth.views.logout')
+    url(r'^accounts/', include('registration.backends.default.urls')),
 )
