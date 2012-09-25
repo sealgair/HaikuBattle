@@ -3,9 +3,6 @@
 {% block extrahead %}
 {{ block.super }}
 <style>
-    #hand {
-        background-color: #eee8aa;
-    }
     .phrase {
         color: #fafad2;
         background-color: #008800;
@@ -23,9 +20,12 @@
         overflow: hidden;
     }
     ul.phraseholder {
+        background-color: #eee8aa;
         list-style-type: none;
         margin: 0;
         padding: 0;
+        height: 17em;
+        overflow: auto;
     }
 </style>
 {% endblock %}
@@ -38,14 +38,26 @@
     <input type=submit value="Ready!"/>
 </form>
 
-<ul id="hand"class="phraseholder">
-    {% for phrase in player.hand.all %}
-    <li class="phrase syllable-{{ phrase.syllables }}">
+<table>
+<tr>
+<td><ul id="hand-5"class="phraseholder">
+    {% for phrase in syllable_5 %}
+    <li class="phrase syllable-5">
         {{ phrase }}
         <input type="hidden" value="{{ phrase.id }}"/>
     </li>
     {% endfor %}
-</ul>
+</ul></td>
+<td><ul id="hand-7"class="phraseholder">
+    {% for phrase in syllable_7 %}
+    <li class="phrase syllable-7">
+        {{ phrase }}
+        <input type="hidden" value="{{ phrase.id }}"/>
+    </li>
+    {% endfor %}
+</ul></td>
+</tr>
+</table>
 {% endblock %}
 
 {% block extrabody %}
@@ -68,7 +80,7 @@
         });
     }
 
-    $('#haiku, #hand').sortable({connectWith: ".phraseholder", revert: 100});
+    $('#haiku, .phraseholder').sortable({connectWith: ".phraseholder", revert: 100});
     $('#haiku').bind("sortreceive", function(event, ui) {
         var count;
         var sylClass;
