@@ -62,7 +62,9 @@ def build_haiku(request, game_id):
     context = {
         'game': game,
         'player': player,
-        'form': form
+        'form': form,
+        'syllable_5': player.hand.filter(syllables=5),
+        'syllable_7': player.hand.filter(syllables=7),
     }
     return render_to_response(
         "game/build_haiku.html",
