@@ -13,6 +13,7 @@ def player_dashboard(request):
         can_delete=False, extra=6)
 
     game_formset = None
+    player_games = None
     response = None
 
     if request.method == 'POST':
