@@ -16,6 +16,15 @@
                 padding: .5em 3em;
                 margin: 0;
             }
+            #header a {
+                color: #fafad2;
+            }
+            #header a:visited {
+                color: #cacaa7;
+            }
+            #header .header_block {
+                margin: 0 1em;
+            }
             .haiku {
                 font-style: italic;
                 color: #666;
@@ -32,14 +41,37 @@
     </head>
     <body>
     <div id="header">
-        <h1>Haiku Battle</h1>
+        <h1><a href="/">Haiku Battle</a></h1>
         {% if user.is_authenticated %}
-            Hello {{ user.username }}
-            <a href="{% url django.contrib.auth.views.logout %}?next={{request.path|default:'/'}}">Log Out</a>
+            <span class="header_block">
+                Hello {{ user.username }}
+            </span>
+            <span class="header_block">
+                <a href="{% url django.contrib.auth.views.logout %}?next={{request.path|default:'/'}}">Log Out</a>
+            </span>
         {% else %}
-            <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}">Log In</a>
+            <span class="header_block">
+                <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}">Log In</a>
+            </span>
         {% endif %}
+        <span class="header_block">
+            <a href="{% url friends.views.add_friend %}">Find Friends</a>
+        </span>
+        <span class="header_block">
+            <a href="{% url friends.views.confirm_friend %}">Confirm Friends</a>
+        </span>
     </div>
+
+    {% block messages %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endblock %}
+
     {% block content %}
     {% endblock %}
     {% block extrabody %}

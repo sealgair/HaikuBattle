@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Pending friendships:</h3>
+
+<ul>
+    {% for friendship in pending_friendships %}
+    <li>
+        <form method="post" action="{% url friends.views.confirm_friend %}">
+            {% csrf_token %}
+            {{ friendship.from_user.username }} wants to be your friend.
+            <input type="hidden" name="confirm_id" value="{{ friendship.id }}"/>
+            <input type="submit" value="Confirm"/>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

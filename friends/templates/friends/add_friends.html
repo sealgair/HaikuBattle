@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block extrahead %}
+<style xmlns="http://www.w3.org/1999/html">
+    #friend_picker {
+        margin-left: 2em;
+    }
+    #friend_search {
+        width: 40em;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="friend_picker">
+    <h3>Your Friends:</h3>
+
+    <form method="POST" action="{% url friends.views.add_friend %}"> {% csrf_token %}
+        <ul>
+            {% for friend in friends %}
+            <li>{{ friend.username }}<{{ friend.email }}>
+                {% if not friend.confirmed %} (unconfirmed) {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        <input type="text" name="friend_search" id="friend_search" placeholder="Add a friend by email or username"/>
+        <br/>
+        <input type="submit"/>
+    </form>
+</div>
+{% endblock %}
