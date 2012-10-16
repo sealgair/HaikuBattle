@@ -3,10 +3,12 @@ from django.core.urlresolvers import reverse
 from django.forms.models import inlineformset_factory
 from django.shortcuts import render_to_response, redirect
 from django.template.context import RequestContext
+from django.contrib.auth.decorators import login_required
 
 from game.models import Player, Game
 from friends.models import Friendship
 
+@login_required(login_url='/accounts/login/')
 def player_dashboard(request):
     """
     """
@@ -14,6 +16,7 @@ def player_dashboard(request):
         can_delete=False, extra=6)
 
     game_formset = None
+    player_games = None
     response = None
 
     if request.method == 'POST':

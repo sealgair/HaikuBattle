@@ -123,8 +123,20 @@ INSTALLED_APPS = (
     'django_extensions',
     'game',
     'dashboard',
+    'registration',
     'friends',
 )
+
+"""
+Settings for django-registration email confirmation, using gmail for smtp.
+"""
+ACCOUNT_ACTIVATION_DAYS = 7 # Registration setting
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT=587
+EMAIL_HOST_USER=''
+EMAIL_HOST_PASSWORD=''
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'grenadeosaurusrex@gmail.com'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

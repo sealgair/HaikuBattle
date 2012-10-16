@@ -1,0 +1,5 @@
+Activate Haiku Battle account at:
+
+http://haiku-battle.herokuapp.com{% url registration_activate activation_key %}
+
+Link is valid for {{ expiration_days }} days.
