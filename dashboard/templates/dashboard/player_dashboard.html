@@ -19,9 +19,6 @@
             padding-bottom: 2em;
             margin: 0 auto;
         }
-        td, th {
-            border-bottom: 1px solid black;
-        }
         th {
             text-align: center;
             padding: 10px;
@@ -47,7 +44,6 @@
         #new-game {
             border: 2px solid #006400;
             background-color: #eee8aa;
-            height: 9em;
             margin-bottom: 1em;
             overflow: hidden;
         }
@@ -59,20 +55,49 @@
             height: 17em;
             overflow: auto;
         }
+        td.other-players {
+            border-bottom: 1px solid black;
+            text-align: center;
+        }
+        .other-players .playing-with {
+            font-size: smaller;
+            color: #aaa;
+        }
+        .other-players .player-list {
+        }
     </style>
 {% endblock %}
 {% block content %}
 {% if player_games %}
 <div id="dashboard-wrapper"><span id="dashboard-content">
 <h3>Your current games:</h3>
-<table><tr><th>Score</th><th>Your Turn to Judge?</th></tr>
+<table><tr><th>Score</th><th>Your Turn?</th></tr>
 {% for player in player_games %}
-    <tr><td><a href="{% url game.views.game game_id=player.game_id %}">
-        {%  if player.score > 0 %}{{ player.score }}{% else %}0{% endif %}</a></td>
-        <td><a href="{% url game.views.game game_id=player.game_id %}">
-            {% if player.turn_order == player.game.current_turn %}Yes!{% else %}
-            No.{% endif %}
-        </a></td></tr>{% endfor %}
+    <tr>
+        <td>
+            <a href="{% url game.views.game game_id=player.game.id %}">
+            {%  if game.score > 0 %}{{ game.score }}{% else %}0{% endif %}</a>
+        </td>
+        <td>
+            <a href="{% url game.views.game game_id=player.game_id %}">
+                {% if player.turn_order == player.game.current_turn %}Yes!{% else %}
+                No.{% endif %}
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" class="other-players">
+            <a href="{% url game.views.game game_id=player.game_id %}">
+            <div class="playing-with">Playing With</div>
+            <div class="player-list">
+                {% for other in player.other_players %}
+                    {% if not forloop.first %}{% if forloop.last %} & {% else %}, {% endif %}{% endif %}{{ other.user.username }}
+                {% endfor %}
+            </div>
+            </a>
+        </td>
+    </tr>
+{% endfor %}
 </table>{% else %}
 <h3>No Current Games!</h3><br/><br/>{% endif %}
 <h2>Create a New Game!</h2>

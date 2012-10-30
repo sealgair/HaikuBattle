@@ -141,6 +141,15 @@ class Player(models.Model):
                     self.game.seen_phrases.add(new_phrase)
                 else: return
 
+    def other_players(self):
+        return self.game.players.exclude(id=self.id)
+
+    def my_turn(self):
+        if self.game.current_turn.judge == self:
+            return self.game.pending_players().count() <= 0
+        else:
+            return self in self.game.pending_players()
+
     def save(self, *args, **kwargs):
         if self.turn_order is None:
             self.turn_order = self.game.players.aggregate(m=models.Max('turn_order'))['m'] or 0
