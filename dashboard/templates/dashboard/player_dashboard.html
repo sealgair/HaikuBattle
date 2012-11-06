@@ -52,7 +52,7 @@
             list-style-type: none;
             margin: 0;
             padding: 0;
-            height: 17em;
+            height: 12em;
             overflow: auto;
         }
         td.other-players {
@@ -65,66 +65,82 @@
         }
         .other-players .player-list {
         }
+
+        #game-sidebar {
+            float: left;
+            padding: 0.5em;
+            border-bottom: 1px solid black;
+            border-right: 1px solid black;
+        }
     </style>
 {% endblock %}
 {% block content %}
 {% if player_games %}
+<div id="game-sidebar">
+    <h3>Your current games:</h3>
+    <table><tr><th>Score</th><th>Your Turn?</th></tr>
+    {% for player in player_games %}
+        <tr>
+            <td>
+                <a href="{% url game.views.game game_id=player.game.id %}">
+                {%  if game.score > 0 %}{{ game.score }}{% else %}0{% endif %}</a>
+            </td>
+            <td>
+                <a href="{% url game.views.game game_id=player.game_id %}">
+                    {% if player.turn_order == player.game.current_turn %}Yes!{% else %}
+                    No.{% endif %}
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="other-players">
+                <a href="{% url game.views.game game_id=player.game_id %}">
+                <div class="playing-with">Playing With</div>
+                <div class="player-list">
+                    {% for other in player.other_players %}
+                        {% if forloop.first %}
+                           {{ other.user.username }}
+                        {% elif forloop.last %}
+                            {{ other.user.username }}
+                        {% else %}
+                            {{ other.user.username }}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>{% else %}
+    <h3>No Current Games!</h3><br/><br/>{% endif %}
+</div>
 <div id="dashboard-wrapper"><span id="dashboard-content">
-<h3>Your current games:</h3>
-<table><tr><th>Score</th><th>Your Turn?</th></tr>
-{% for player in player_games %}
-    <tr>
-        <td>
-            <a href="{% url game.views.game game_id=player.game.id %}">
-            {%  if game.score > 0 %}{{ game.score }}{% else %}0{% endif %}</a>
-        </td>
-        <td>
-            <a href="{% url game.views.game game_id=player.game_id %}">
-                {% if player.turn_order == player.game.current_turn %}Yes!{% else %}
-                No.{% endif %}
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2" class="other-players">
-            <a href="{% url game.views.game game_id=player.game_id %}">
-            <div class="playing-with">Playing With</div>
-            <div class="player-list">
-                {% for other in player.other_players %}
-                    {% if not forloop.first %}{% if forloop.last %} & {% else %}, {% endif %}{% endif %}{{ other.user.username }}
-                {% endfor %}
-            </div>
-            </a>
-        </td>
-    </tr>
-{% endfor %}
-</table>{% else %}
-<h3>No Current Games!</h3><br/><br/>{% endif %}
-<h2>Create a New Game!</h2>
-{% if friends %}
-    <form method="post" action=""> {% csrf_token %}
-        <ul id="new-game" class="friends-picker"></ul>
-        <input type=submit value="Ready!"/>
-    </form>
+    <h2>Create a New Game!</h2>
+    {% if friends %}
+        <form method="post" action=""> {% csrf_token %}
+            <ul id="new-game" class="friends-picker"></ul>
+            <input type=submit value="Ready!"/>
+        </form>
 
-    <h3>Your Friends</h3>
-    <ul id="friends-list" class="friends-picker">
-        {% for friend in friends %}
-        <li class="friend">
-            {{ friend.username }}
-            <input type="hidden" name="player_ids" value="{{ friend.id }}"/>
-        </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <img src="http://i3.kym-cdn.com/entries/icons/original/000/003/619/Untitled-1.jpg"/>
-{% endif %}
-</span>
-{% endblock %}
+        <h3>Your Friends</h3>
+        <ul id="friends-list" class="friends-picker">
+            {% for friend in friends %}
+            <li class="friend">
+                {{ friend.username }}
+                <input type="hidden" name="player_ids" value="{{ friend.id }}"/>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <img src="http://i3.kym-cdn.com/entries/icons/original/000/003/619/Untitled-1.jpg"/>
+    {% endif %}
+    </span>
+    {% endblock %}
 
-{% block extrabody %}
-{{ block.super }}
-<script>
-    $('.friends-picker').sortable({connectWith: ".friends-picker", revert: 100});
-</script>
-{% endblock %}
+    {% block extrabody %}
+    {{ block.super }}
+    <script>
+        $('.friends-picker').sortable({connectWith: ".friends-picker", revert: 100});
+    </script>
+    {% endblock %}
+</div>
