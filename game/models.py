@@ -144,6 +144,15 @@ class Player(models.Model):
     def other_players(self):
         return self.game.players.exclude(id=self.id)
 
+    def render_other_players(self):
+        other_players = list(self.other_players().values_list('user__username', flat=True))
+        if len(other_players) == 0:
+            return ""
+        if len(other_players) == 1:
+            return other_players[0]
+        else:
+            return "{0} & {1}".format(", ".join(other_players[:-1]), other_players[-1])
+
     def my_turn(self):
         if self.game.current_turn.judge == self:
             return self.game.pending_players().count() <= 0

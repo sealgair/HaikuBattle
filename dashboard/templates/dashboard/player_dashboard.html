@@ -97,15 +97,7 @@
                 <a href="{% url game.views.game game_id=player.game_id %}">
                 <div class="playing-with">Playing With</div>
                 <div class="player-list">
-                    {% for other in player.other_players %}
-                        {% if forloop.first %}
-                           {{ other.user.username }}
-                        {% elif forloop.last %}
-                            {{ other.user.username }}
-                        {% else %}
-                            {{ other.user.username }}
-                        {% endif %}
-                    {% endfor %}
+                    {{ player.render_other_players }}
                 </div>
                 </a>
             </td>
