@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+<style>
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="player-picker">
+    <form method="post"> {% csrf_token %}
+        <ul>
+            {{ form.as_ul }}
+            <input type="submit" value="Add"/>
+        </ul>
+    </form>
+</div>
+{% endblock %}

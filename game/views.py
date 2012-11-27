@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 from django.forms.widgets import RadioSelect
 from django.shortcuts import get_object_or_404, render_to_response, redirect
 from django.template.context import RequestContext
+from friends.models import Friendship
 from game.models import Game, Player, Haiku, Turn
 
 class BuildHaikuForm(forms.ModelForm):
@@ -119,5 +120,44 @@ def turn(request, turn_id):
     }
     return render_to_response(
         "game/turn.html",
+        context_instance=RequestContext(request, context)
+    )
+
+class InviteForm(forms.Form):
+    friend = forms.ModelChoiceField(
+        queryset=None,
+        empty_label=None,
+        widget=RadioSelect
+    )
+
+    def __init__(self, *args, **kwargs):
+        self.game = kwargs.pop('game')
+        self.user = kwargs.pop('user')
+        super(InviteForm, self).__init__(*args, **kwargs)
+        self.fields['friend'].queryset = Friendship.objects.friends_for_user(
+            self.user
+        ).exclude(
+            player__game=self.game
+        )
+
+    def save(self):
+        new_user = self.cleaned_data['friend']
+        self.game.players.create(user=new_user)
+
+@login_required
+def invite(request, game_id):
+    context = {}
+    game = get_object_or_404(Game, id=game_id)
+    if request.method == "POST":
+        form = InviteForm(request.POST, game=game, user=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('game.views.game', kwargs={'game_id': game_id}))
+    else:
+        form = InviteForm(game=game, user=request.user)
+
+    context['form'] = form
+    return render_to_response(
+        "game/invite_player.html",
         context_instance=RequestContext(request, context)
     )

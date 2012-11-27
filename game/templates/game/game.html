@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block extrahead %}
-<style xmlns="http://www.w3.org/1999/html">
+<style xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     #game-sidebar {
         float: left;
         border: 2px solid #5E1717;
@@ -24,6 +24,7 @@
 
 {% block content %}
 <div id="game-sidebar">
+    <a href="{% url game.views.invite game_id=game.id %}">Invite someone new</a></br
     <h3>Players:</h3>
     <ul>
     {% for player in game.players.all %}
