@@ -24,7 +24,8 @@
 
 {% block content %}
 <div id="game-sidebar">
-    <a href="{% url game.views.invite game_id=game.id %}">Invite someone new</a></br
+    <a href="{% url game.views.invite game_id=game.id %}">Invite someone new</a></br>
+    <a href="{% url game.views.quit game_id=game.id %}">Quit this game</a></br>
     <h3>Players:</h3>
     <ul>
     {% for player in game.players.all %}

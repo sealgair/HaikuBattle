@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="player-picker">
+    <h3>Are you sure you want to be a quitter?</h3>
+    <form method="post"> {% csrf_token %}
+        <input type="submit" name="confirm" value="YES"/>
+        <input type="submit" name="confirm" value="NO"/>
+    </form>
+</div>
+{% endblock %}

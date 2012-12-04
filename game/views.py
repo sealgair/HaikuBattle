@@ -161,3 +161,19 @@ def invite(request, game_id):
         "game/invite_player.html",
         context_instance=RequestContext(request, context)
     )
+
+@login_required
+def quit(request, game_id):
+    game = get_object_or_404(Game, id=game_id)
+    if request.method == "POST":
+        if request.POST['confirm'] == 'YES':
+            game.players.filter(user=request.user).delete()
+            return redirect(reverse('dashboard.views.player_dashboard'))
+        else:
+            return redirect(reverse('game.views.game', kwargs={'game_id': game_id}))
+    return render_to_response("game/quit_confirm.html",
+        context_instance=RequestContext(request, {
+            'game': game
+        })
+    )
+
