@@ -26,6 +26,20 @@
 <div id="game-sidebar">
     <a href="{% url game.views.invite game_id=game.id %}">Invite someone new</a></br>
     <a href="{% url game.views.quit game_id=game.id %}">Quit this game</a></br>
+    <a href="{% url game.views.add_hotseat_player game_id=game.id %}">Add a player to the hotseat</a></br>
+
+    {% if request.session.hotseat %}
+        <h3>Hotseat: </h3>
+        <ul>
+            {% for hs_user in request.session.hotseat %}
+            <li>
+                {{ hs_user }}
+                <a href="{% url game.views.remove_hotseat_player game_id=game.id user_id=hs_user.id %}">x</a>
+            </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
     <h3>Players:</h3>
     <ul>
     {% for player in game.players.all %}

@@ -1,9 +1,12 @@
 from django import forms
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.forms.widgets import RadioSelect
 from django.shortcuts import get_object_or_404, render_to_response, redirect
 from django.template.context import RequestContext
+from django.contrib.auth.forms import AuthenticationForm
+
 from friends.models import Friendship
 from game.models import Game, Player, Haiku, Turn
 
@@ -177,3 +180,37 @@ def quit(request, game_id):
         })
     )
 
+@login_required
+def add_hotseat_player(request, game_id):
+    game = get_object_or_404(Game, id=game_id)
+    if request.method == "POST":
+        form = AuthenticationForm(data=request.POST);
+        if form.is_valid():
+            hotseat_user = form.get_user()
+            hotseat = request.session.get('hotseat', [])
+            if hotseat_user in hotseat:
+                messages.info(request, "{0} is already in the hotseat lineup".format(hotseat_user))
+            elif not game.players.filter(user=hotseat_user).exists():
+                messages.info(request, "{0} isn't playing in this game".format(hotseat_user))
+            else:
+                hotseat.append(hotseat_user)
+            request.session['hotseat'] = hotseat
+            return redirect(reverse('game.views.game', kwargs={'game_id': game_id}))
+    else:
+        form = AuthenticationForm()
+    return render_to_response("game/add_hotseat_player.html",
+        context_instance=RequestContext(request, {
+            'game': game,
+            'form': form
+        })
+    )
+
+@login_required
+def remove_hotseat_player(request, game_id, user_id):
+    hotseat = request.session.get('hotseat', [])
+    for hs_user in hotseat:
+        if hs_user.id == int(user_id):
+            hotseat.remove(hs_user)
+            request.session['hotseat'] = hotseat
+            break
+    return redirect(reverse('game.views.game', kwargs={'game_id': game_id}))
