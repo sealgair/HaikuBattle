@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h3>Log in to join {{ request.user.username }}'s hotseat</h3>
 <form method="post"> {% csrf_token %}
     <ul>
         {{ form.as_ul }}

@@ -83,7 +83,7 @@ class Game(models.Model):
 
     def pending_players(self):
         return self.players.exclude(id=self.judge.id)\
-        .exclude(haiku__in=self.current_turn.haiku_set.all())
+            .exclude(haiku__in=self.current_turn.haiku_set.all())
 
     def past_turns(self):
         return self.turns.exclude(id=self.current_turn.id).order_by('-number')
@@ -167,6 +167,10 @@ class Player(models.Model):
         super(Player, self).save(*args, **kwargs)
 
         self.fill_hand()
+
+    def is_composing(self):
+        "Returns true if the game is waiting on this player to compose a haiku"
+        return self in self.game.pending_players()
 
 class Haiku(models.Model):
     """

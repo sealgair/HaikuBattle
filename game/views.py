@@ -6,6 +6,7 @@ from django.forms.widgets import RadioSelect
 from django.shortcuts import get_object_or_404, render_to_response, redirect
 from django.template.context import RequestContext
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login
 
 from friends.models import Friendship
 from game.models import Game, Player, Haiku, Turn
@@ -59,6 +60,23 @@ def build_haiku(request, game_id):
         form = BuildHaikuForm(data=request.POST, player=player)
         if form.is_valid():
             form.save()
+            hotseat = request.session.get('hotseat', [])
+            for hs_user in hotseat:
+                #first check to see if any players in the hotseat are composing
+                if game.players.get(user=hs_user).is_composing():
+                    return redirect(
+                        reverse('game.views.next_hotseat_player',
+                            kwargs={'game_id': game_id, 'user_id': hs_user.id}
+                        )
+                    )
+            if game.current_turn.judge.user in hotseat:
+                #then check to see if the judge is in the hotseat
+                return redirect(
+                    reverse('game.views.next_hotseat_player',
+                        kwargs={'game_id': game_id, 'user_id': hs_user.id}
+                    )
+                )
+            #otherwise leave the current player authenticated
             return redirect(reverse('game.views.game', kwargs={'game_id': game_id}))
     else:
         form = BuildHaikuForm(player=player)
@@ -188,7 +206,7 @@ def add_hotseat_player(request, game_id):
         if form.is_valid():
             hotseat_user = form.get_user()
             hotseat = request.session.get('hotseat', [])
-            if hotseat_user in hotseat:
+            if hotseat_user in hotseat or hotseat_user == request.user:
                 messages.info(request, "{0} is already in the hotseat lineup".format(hotseat_user))
             elif not game.players.filter(user=hotseat_user).exists():
                 messages.info(request, "{0} isn't playing in this game".format(hotseat_user))
@@ -213,4 +231,26 @@ def remove_hotseat_player(request, game_id, user_id):
             hotseat.remove(hs_user)
             request.session['hotseat'] = hotseat
             break
+    return redirect(reverse('game.views.game', kwargs={'game_id': game_id}))
+
+@login_required
+def next_hotseat_player(request, game_id, user_id=None):
+    if 'hotseat' in request.session:
+        hotseat = request.session.get('hotseat', [])
+
+        hs_user = None
+        if user_id is not None:
+            for u in hotseat:
+                if u.id == int(user_id):
+                    hs_user = u
+                    break
+        if hs_user == None:
+            hs_user = hotseat[0]
+        hotseat.remove(hs_user)
+
+        request.user.backend = hs_user.backend
+        hotseat.append(request.user) #add old user to end of hotseat
+        login(request, hs_user) #switch logged in user to next in hotseat
+        request.session['hotseat'] = hotseat
+        messages.info(request, "It's {0}'s turn now".format(hs_user))
     return redirect(reverse('game.views.game', kwargs={'game_id': game_id}))
