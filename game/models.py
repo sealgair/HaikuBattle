@@ -65,12 +65,14 @@ class Game(models.Model):
 
     def advance_turn(self):
         if self.current_turn.winner:
+            judge_turn = self.judge.turn_order
+            next_players = self.players.filter(turn_order__gt=judge_turn)
+            if not next_players.exists():
+                next_players = self.players.all()
+            next_player = next_players[0]
+
             self.turns.create(number=self.current_turn.number+1)
-            this_turn = self.players.aggregate(t=models.Min('turn_order'))['t']
-            try:
-                self.current_turn.judge = self.players.get(turn_order=this_turn+1)
-            except Player.DoesNotExist:
-                self.current_turn.judge = self.players.get(turn_order=0)
+            self.current_turn.judge = next_player
             self.save()
 
             for player in self.players.all():
@@ -126,6 +128,7 @@ class Player(models.Model):
             ("user", "game"),
             ("user", "game", "turn_order")
         )
+        ordering = ['game', 'turn_order']
 
     @property
     def score(self):
@@ -171,6 +174,9 @@ class Player(models.Model):
     def is_composing(self):
         "Returns true if the game is waiting on this player to compose a haiku"
         return self in self.game.pending_players()
+
+    def __unicode__(self):
+        return unicode(self.user)
 
 class Haiku(models.Model):
     """

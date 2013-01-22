@@ -37,25 +37,30 @@ class TestGame(TestCase):
         self.assertEqual("user0", game.judge.user.username)
         for player in game.players.all():
             self.assertEqual(24, player.hand.count())
-        self.assertEqual(24*5, game.seen_phrases.count())
+        self.assertEqual(24*5, game.seen_phrases.distinct().count())
 
-        # play a round
-        self.assertEqual(4, game.pending_players().count())
-        for player in game.players.exclude(id=game.judge.id):
-            Haiku.objects.create(
-                turn=game.current_turn,
-                player=player,
-                phrase1=player.hand.filter(syllables=5)[0],
-                phrase2=player.hand.filter(syllables=7)[0],
-                phrase3=player.hand.filter(syllables=5)[1]
-            )
-        self.assertEqual(0, game.pending_players().count())
-        game.current_turn.advance(game.current_turn.haiku_set.all()[0])
+        # play some rounds:
+        player_count = Player.objects.count()
+        for i in range(player_count*2):
+            self.assertEqual(4, game.pending_players().count())
+            for player in game.players.exclude(id=game.judge.id):
+                Haiku.objects.create(
+                    turn=game.current_turn,
+                    player=player,
+                    phrase1=player.hand.filter(syllables=5)[0],
+                    phrase2=player.hand.filter(syllables=7)[0],
+                    phrase3=player.hand.filter(syllables=5)[1]
+                )
+            self.assertEqual(0, game.pending_players().count())
+            game.current_turn.advance(game.current_turn.haiku_set.all()[0])
 
-        #make sure turn advanced properly
-        self.assertEqual(2, game.turns.count())
-        self.assertEqual(2, game.current_turn.number)
-        self.assertEqual("user1", game.judge.user.username)
-        for player in game.players.all():
-            self.assertEqual(24, player.hand.count())
-        self.assertEqual(27*4 + 24, game.seen_phrases.count())
+            #make sure turn advanced properly
+            self.assertEqual(i+2, game.turns.count())
+            self.assertEqual(i+2, game.current_turn.number)
+            user_number = (i+1) % player_count
+            self.assertEqual("user{0}".format(user_number), game.judge.user.username)
+            for player in game.players.all():
+                self.assertEqual(24, player.hand.count())
+            initial_hands = 24*5
+            played_phrases = (player_count - 1) * 3 * (i+1)
+            self.assertEqual(initial_hands + played_phrases, game.seen_phrases.count())
