@@ -7,6 +7,8 @@ SYLLABLE_AMOUNTS = {
     7: 8
 }
 
+MAX_SCORE = 10
+
 class Dictionary(models.Model):
     """
     """
@@ -32,6 +34,7 @@ class Game(models.Model):
     """
     """
     seen_phrases = models.ManyToManyField(Phrase, related_name="seen_by")
+    done = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         super(Game, self).save(*args, **kwargs)
@@ -64,15 +67,18 @@ class Game(models.Model):
         return Phrase.objects.exclude(seen_by=self)
 
     def advance_turn(self):
-        if self.current_turn.winner:
+        if self.current_turn.winner and not self.done:
             judge_turn = self.judge.turn_order
             next_players = self.players.filter(turn_order__gt=judge_turn)
             if not next_players.exists():
                 next_players = self.players.all()
             next_player = next_players[0]
 
-            self.turns.create(number=self.current_turn.number+1)
-            self.current_turn.judge = next_player
+            if self.current_turn.winner.score >= MAX_SCORE:
+                self.done = True
+            else:
+                self.turns.create(number=self.current_turn.number+1)
+                self.current_turn.judge = next_player
             self.save()
 
             for player in self.players.all():
