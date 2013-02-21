@@ -6,3 +6,4 @@ django-registration
 ipython==0.13
 readline
 django-extensions
+south

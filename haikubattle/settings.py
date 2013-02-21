@@ -136,6 +136,7 @@ INSTALLED_APPS = (
     'dashboard',
     'registration',
     'friends',
+    'south',
 )
 
 """
