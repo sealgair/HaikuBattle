@@ -3,13 +3,15 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.forms.widgets import RadioSelect
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render_to_response, redirect
 from django.template.context import RequestContext
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login
 
 from friends.models import Friendship
-from game.models import Game, Player, Haiku, Turn
+from game.models import Game, Player, Haiku, Turn, Phrase
+
 
 class BuildHaikuForm(forms.ModelForm):
     class Meta:
@@ -261,3 +263,9 @@ def next_hotseat_player(request, game_id, user_id=None):
         request.session['hotseat'] = hotseat
         messages.info(request, "It's {0}'s turn now".format(hs_user))
     return redirect(reverse('game.views.game', kwargs={'game_id': game_id}))
+
+def random_haiku(request):
+    p1, p3 = Phrase.objects.filter(syllables=5).order_by('?')[0:2]
+    p2 = Phrase.objects.filter(syllables=7).order_by('?')[0]
+    return HttpResponse(u"{0}\n{1}\n{2}".format(p1, p2, p3), content_type="text/plain")
+
