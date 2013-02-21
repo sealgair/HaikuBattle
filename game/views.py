@@ -1,3 +1,4 @@
+import json
 from django import forms
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -264,8 +265,15 @@ def next_hotseat_player(request, game_id, user_id=None):
         messages.info(request, "It's {0}'s turn now".format(hs_user))
     return redirect(reverse('game.views.game', kwargs={'game_id': game_id}))
 
-def random_haiku(request):
+def random_haiku(request, format="plain"):
     p1, p3 = Phrase.objects.filter(syllables=5).order_by('?')[0:2]
     p2 = Phrase.objects.filter(syllables=7).order_by('?')[0]
-    return HttpResponse(u"{0}\n{1}\n{2}".format(p1, p2, p3), content_type="text/plain")
+
+    haiku = u"{0}\n{1}\n{2}".format(p1, p2, p3)
+    if format == "json":
+        haiku = json.dumps({
+            'haiku': [str(p1), str(p2), str(p3)]
+        })
+
+    return HttpResponse(haiku, content_type="text/{0}".format(format))
 

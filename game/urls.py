@@ -13,5 +13,6 @@ urlpatterns = patterns('game.views',
     url(r'^add_hotseat_player/(?P<game_id>\d+)/', 'add_hotseat_player'),
     url(r'^remove_hotseat_player/(?P<game_id>\d+)/(?P<user_id>\d+)/', 'remove_hotseat_player'),
     url(r'^random_haiku/', 'random_haiku'),
+    url(r'^random_haiku.json', 'random_haiku', kwargs={'format': 'json'}),
 )
 
