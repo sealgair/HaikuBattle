@@ -4,4 +4,5 @@ venv
 *.orig
 .hg/*
 settings_local.py
+haiku
 

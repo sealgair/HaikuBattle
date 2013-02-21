@@ -32,7 +32,7 @@ def player_dashboard(request):
             response = redirect(reverse('game.views.game', kwargs={'game_id': game.id}))
     elif request.method == "GET":
         game_formset = GameInlineFormset(instance=Game())
-        player_games = Player.objects.filter(user=request.user.id)
+        player_games = Player.objects.filter(user=request.user.id, game__done=False)
 
     if response is None:
         context = {

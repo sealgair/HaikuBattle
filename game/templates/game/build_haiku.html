@@ -63,6 +63,13 @@
 </ul></td>
 </tr>
 </table>
+
+{% if player.has_next %}
+<form method="post" action="{% url game.views.play_random game_id=game.id %}">
+    {% csrf_token %}
+    <input type=submit value="Play Random" alt="I don't like my choices"/>
+</form>
+{% endif %}
 {% endblock %}
 
 {% block extrabody %}

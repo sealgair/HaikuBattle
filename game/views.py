@@ -93,6 +93,13 @@ def build_haiku(request, game_id):
         context_instance=RequestContext(request, context)
     )
 
+def play_random(request, game_id):
+    if request.method == "POST":
+        game = get_object_or_404(Game, id=game_id)
+        player = get_object_or_404(Player, game=game, user=request.user.id)
+        player.play_random()
+    return redirect(reverse('game.views.game', kwargs={'game_id': game_id}))
+
 def judge(request, game_id):
     game = get_object_or_404(Game, id=game_id)
     turn = game.current_turn

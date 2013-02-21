@@ -140,12 +140,21 @@ class Player(models.Model):
     def score(self):
         return Turn.objects.filter(winner__player=self).count()
 
+    def has_next(self):
+        pot5 = self.game.available_phrases().filter(syllables=5)
+        pot7 = self.game.available_phrases().filter(syllables=7)
+        return pot5.count() >= 2 and pot7 >= 1
+
+    def next_phrase(self, syllables):
+        potentials = self.game.available_phrases().filter(syllables=syllables).order_by('?')
+        if potentials:
+            return potentials[0]
+
     def fill_hand(self):
         for s in (5,7):
             while self.hand.filter(syllables=s).count() < SYLLABLE_AMOUNTS[s]:
-                potentials = self.game.available_phrases().filter(syllables=s)
-                if potentials:
-                    new_phrase = potentials.order_by('?')[0]
+                new_phrase = self.next_phrase(s)
+                if new_phrase:
                     self.hand.add(new_phrase)
                     self.game.seen_phrases.add(new_phrase)
                 else: return
@@ -180,6 +189,14 @@ class Player(models.Model):
     def is_composing(self):
         "Returns true if the game is waiting on this player to compose a haiku"
         return self in self.game.pending_players()
+
+    def play_random(self):
+        Haiku.objects.create(
+            player=self,
+            phrase1=self.next_phrase(5),
+            phrase2=self.next_phrase(7),
+            phrase3=self.next_phrase(5)
+        )
 
     def __unicode__(self):
         return unicode(self.user)
