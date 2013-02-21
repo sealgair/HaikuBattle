@@ -4,6 +4,9 @@ from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+"""
+alter table game_game add column "done" bool NOT NULL DEFAULT 0
+"""
 
 class Migration(SchemaMigration):
 
