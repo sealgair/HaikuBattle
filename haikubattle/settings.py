@@ -11,6 +11,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+RANDOM_PLAYER_ID = 0
+
 DATABASES = {
     'default': dj_database_url.config(default='postgres://localhost/haikubattle')
 }
