@@ -142,7 +142,7 @@ INSTALLED_APPS = (
 )
 
 """
-Settings for django-registration email confirmation, using gmail for smtp.
+Settings for django-registration email confirmation, using sendgrid for smtp.
 """
 ACCOUNT_ACTIVATION_DAYS = 7 # Registration setting
 EMAIL_HOST = 'smtp.sendgrid.net'
