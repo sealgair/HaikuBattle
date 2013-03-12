@@ -1,3 +1,5 @@
+.hgignore
+email
 venv
 *.pyc
 .idea/*
