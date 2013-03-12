@@ -1,9 +1,11 @@
+from django.contrib import messages
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.forms.models import inlineformset_factory
 from django.shortcuts import render_to_response, redirect
 from django.template.context import RequestContext
 from django.contrib.auth.decorators import login_required
+from dashboard.forms import AccountInfoForm
 
 from game.models import Player, Game
 from friends.models import Friendship
@@ -45,4 +47,20 @@ def player_dashboard(request):
     return response
 
 
-
+def account_info(request):
+    context = {}
+    if request.method == 'POST':
+        form = AccountInfoForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.info(request, "Account info saved successfully")
+            return redirect(reverse('dashboard.views.account_info'))
+    else:
+        form = AccountInfoForm(instance=request.user)
+    context = {
+        'form': form
+    }
+    return render_to_response(
+        'dashboard/account_info.html',
+        RequestContext(request, context)
+    )
