@@ -17,7 +17,7 @@
 {% endblock %}
 
 {% block content %}
-<a href="{% url 'game.views.game' game_id=game.id %}">Back to game</a>
+<a href="{% url game.views.game game_id=game.id %}">Back to game</a>
 <div id="turn">
     {% for haiku in turn.haiku_set.all %}
         {% if turn.winner == haiku %}<span class="winner">Winner:</span>{% endif %}

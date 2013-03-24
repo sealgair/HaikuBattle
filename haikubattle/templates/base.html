@@ -47,21 +47,21 @@
         <h1><a href="/">Haiku Battle</a></h1>
         {% if user.is_authenticated %}
             <span class="header_block">
-                <a href="{% url 'dashboard.views.account_info' %}">{{ user.username }}</a>
+                <a href="{% url dashboard.views.account_info %}">{{ user.username }}</a>
             </span>
             <span class="header_block">
-                <a href="{% url 'django.contrib.auth.views.logout' %}?next={{request.path|default:'/'}}">Log Out</a>
+                <a href="{% url django.contrib.auth.views.logout %}?next={{request.path|default:'/'}}">Log Out</a>
             </span>
         {% else %}
             <span class="header_block">
-                <a href="{% url 'django.contrib.auth.views.login' %}?next={{request.path}}">Log In</a>
+                <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}">Log In</a>
             </span>
         {% endif %}
         <span class="header_block">
-            <a href="{% url 'friends.views.add_friend' %}">Find Friends</a>
+            <a href="{% url friends.views.add_friend %}">Find Friends</a>
         </span>
         <span class="header_block">
-            <a href="{% url 'friends.views.confirm_friend' %}">Confirm Friends</a>
+            <a href="{% url friends.views.confirm_friend %}">Confirm Friends</a>
         </span>
     </div>
 

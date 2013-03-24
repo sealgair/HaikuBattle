@@ -9,11 +9,6 @@ ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
 
-ALLOWED_HOSTS = (
-    'localhost',
-    'haiku-battle.herokuapp.com',
-)
-
 MANAGERS = ADMINS
 
 RANDOM_PLAYER_ID = 0

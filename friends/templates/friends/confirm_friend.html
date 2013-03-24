@@ -6,7 +6,7 @@
 <ul>
     {% for friendship in pending_friendships %}
     <li>
-        <form method="post" action="{% url 'friends.views.confirm_friend' %}">
+        <form method="post" action="{% url friends.views.confirm_friend %}">
             {% csrf_token %}
             {{ friendship.from_user.username }} wants to be your friend.
             <input type="hidden" name="confirm_id" value="{{ friendship.id }}"/>

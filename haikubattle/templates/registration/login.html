@@ -4,8 +4,8 @@
     <ul>
         {{ form.as_ul }}
         <li><input type="submit" value="Log In"/></li>
-        <li><a style="padding-left:8px" href="{% url 'registration_register' %}">Create an account</a></li>
-        <li><a style="padding-left:8px" href="{% url 'password_reset' %}">I forgot my password</a></li>
+        <li><a style="padding-left:8px" href="{% url registration_register %}">Create an account</a></li>
+        <li><a style="padding-left:8px" href="{% url password_reset %}">I forgot my password</a></li>
     </ul>
 </form>
 {% endblock %}
