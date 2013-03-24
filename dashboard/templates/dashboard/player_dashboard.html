@@ -82,11 +82,11 @@
     {% for player in player_games %}
         <tr>
             <td>
-                <a href="{% url game.views.game game_id=player.game.id %}">
+                <a href="{% url 'game.views.game' game_id=player.game.id %}">
                 {%  if game.score > 0 %}{{ game.score }}{% else %}0{% endif %}</a>
             </td>
             <td>
-                <a href="{% url game.views.game game_id=player.game_id %}">
+                <a href="{% url 'game.views.game' game_id=player.game_id %}">
                     {% if player.turn_order == player.game.current_turn %}Yes!{% else %}
                     No.{% endif %}
                 </a>
@@ -94,7 +94,7 @@
         </tr>
         <tr>
             <td colspan="2" class="other-players">
-                <a href="{% url game.views.game game_id=player.game_id %}">
+                <a href="{% url 'game.views.game' game_id=player.game_id %}">
                 <div class="playing-with">Playing With</div>
                 <div class="player-list">
                     {{ player.render_other_players }}

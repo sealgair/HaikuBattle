@@ -14,7 +14,7 @@
 <div id="friend_picker">
     <h3>Your Friends:</h3>
 
-    <form method="POST" action="{% url friends.views.add_friend %}"> {% csrf_token %}
+    <form method="POST" action="{% url 'friends.views.add_friend' %}"> {% csrf_token %}
         <ul>
             {% for friend in friends %}
             <li>{{ friend.username }}<{{ friend.email }}>
