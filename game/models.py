@@ -8,7 +8,7 @@ SYLLABLE_AMOUNTS = {
     7: 8
 }
 
-MAX_SCORE = 10
+MAX_SCORE = 5
 
 class Dictionary(models.Model):
     """
