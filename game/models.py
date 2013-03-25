@@ -230,6 +230,7 @@ class Haiku(models.Model):
         unique_together = [
             ('player', 'turn')
         ]
+        ordering = ['?']
 
     def save(self, *args, **kwargs):
         created = not self.pk
