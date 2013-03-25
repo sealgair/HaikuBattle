@@ -68,7 +68,7 @@ class Game(models.Model):
             return next_judge
 
     def available_phrases(self):
-        return Phrase.objects.exclude(seen_by=self)
+        return Phrase.objects.exclude(seen_by=self).distinct()
 
     def advance_turn(self):
         if self.current_turn.winner and not self.done:
