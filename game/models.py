@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models import Min
+from django.db.models import Min, Max
 
 SYLLABLE_AMOUNTS = {
     5: 16,
@@ -36,6 +36,10 @@ class Game(models.Model):
     """
     seen_phrases = models.ManyToManyField(Phrase, related_name="seen_by")
     done = models.BooleanField(default=False)
+    date_started = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-date_started"]
 
     def save(self, *args, **kwargs):
         super(Game, self).save(*args, **kwargs)
@@ -66,6 +70,10 @@ class Game(models.Model):
             next_judge = next_players[0]
 
             return next_judge
+
+    @property
+    def last_played(self):
+        return self.current_turn.haiku_set.aggregate(p=Max('date_played'))['p']
 
     def available_phrases(self):
         return Phrase.objects.exclude(seen_by=self)
@@ -219,6 +227,7 @@ class Haiku(models.Model):
     phrase1 = models.ForeignKey(Phrase, related_name="haiku_phrase1", null=True)
     phrase2 = models.ForeignKey(Phrase, related_name="haiku_phrase2", null=True)
     phrase3 = models.ForeignKey(Phrase, related_name="haiku_phrase3", null=True)
+    date_played = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
         return u"{0} / {1} / {2}".format(self.phrase1, self.phrase2, self.phrase3)

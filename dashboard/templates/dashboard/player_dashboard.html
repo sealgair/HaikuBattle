@@ -15,25 +15,12 @@
             display: inline-block;
             margin: 0 auto;
         }
-        table {
-            padding-bottom: 2em;
-            margin: 0 auto;
+        .game-title {
+            margin-bottom: 0;
         }
-        th {
-            text-align: center;
-            padding: 10px;
-        }
-        td {
-            text-align: right;
-            padding: 5px;
-            width: auto;
-        }
-        td a {
-            display: block;
-            width: 100%;
-            height: 100%;
-            text-decoration: none;
-            color: black;
+        ul.game-data {
+            font-size: smaller;
+            margin-top: 0;
         }
         .friend {
             color: #fafad2;
@@ -78,30 +65,28 @@
 {% if player_games %}
 <div id="game-sidebar">
     <h3>Your current games:</h3>
-    <table><tr><th>Score</th><th>Your Turn?</th></tr>
     {% for player in player_games %}
-        <tr>
-            <td>
-                <a href="{% url game.views.game game_id=player.game.id %}">
-                {%  if game.score > 0 %}{{ game.score }}{% else %}0{% endif %}</a>
-            </td>
-            <td>
-                <a href="{% url game.views.game game_id=player.game_id %}">
-                    {% if player.turn_order == player.game.current_turn %}Yes!{% else %}
-                    No.{% endif %}
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" class="other-players">
-                <a href="{% url game.views.game game_id=player.game_id %}">
-                <div class="playing-with">Playing With</div>
-                <div class="player-list">
-                    {{ player.render_other_players }}
-                </div>
-                </a>
-            </td>
-        </tr>
+    <h3 class="game-title">
+    <a href="{% url game.views.game game_id=player.game.id %}">
+        Game {{ player.game.id }}
+    </a></h3>
+    <ul class="game-data">
+        <li>
+            Score: {% if player.game.score > 0 %}{{ player.game.score }}{% else %}0{% endif %}
+        </li>
+        <li>
+            It is {% if player.turn_order != player.game.current_turn %}not{% endif %} your turn.
+        </li>
+        <li>
+            This game was started {{ player.game.date_started|timesince }} ago
+        </li>
+        <li>
+            The latest haiku was played {{ player.game.last_played|timesince }} ago
+        </li>
+        <li>
+            You are playing with {{ player.render_other_players }}
+        </li>
+    </ul>
     {% endfor %}
     </table>{% else %}
     <h3>No Current Games!</h3><br/><br/>{% endif %}
