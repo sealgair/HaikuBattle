@@ -3,7 +3,9 @@ __author__ = 'courtf'
 from django.conf.urls import patterns, url
 
 urlpatterns = patterns('game.views',
-    url(r'^(?P<game_id>\d+)/', 'game'),
+    url(r'^(?P<game_id>\d+)/$', 'game'),
+    url(r'^(?P<game_id>\d+)/judge/$', 'judge'),
+    url(r'^(?P<game_id>\d+)/compose/$', 'build_haiku'),
     url(r'^play_random/(?P<game_id>\d+)/', 'play_random'),
     url(r'^next_hotseat/(?P<game_id>\d+)/', 'next_hotseat_player'),
     url(r'^next_hotseat/(?P<game_id>\d+)/(?P<user_id>\d+)/', 'next_hotseat_player'),

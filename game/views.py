@@ -132,7 +132,7 @@ def game(request, game_id):
         'game': game
     }
     if game.judge == player:
-        return judge(request, game_id)
+        return redirect(reverse(judge, kwargs={'game_id': game_id}))
     elif game.current_turn.haiku_set.filter(player=player).exists():
         context['haiku'] = game.current_turn.haiku_set.get(player=player)
         return render_to_response(
@@ -140,7 +140,7 @@ def game(request, game_id):
             context_instance=RequestContext(request, context)
         )
     else:
-        return build_haiku(request, game_id)
+        return redirect(reverse(build_haiku, kwargs={'game_id': game_id}))
 
 @login_required
 def turn(request, turn_id):
