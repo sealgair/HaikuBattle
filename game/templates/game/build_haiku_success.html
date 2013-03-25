@@ -1,10 +1,29 @@
 {% extends "game/game.html" %}
 
+{% block extrahead %}
+{{ block.super }}
+<style>
+    #haiku-list li {
+        margin-bottom: 1em;
+    }
+</style>
+{% endblock %}
+
 {% block game_content %}
     You submitted <div class="haiku">{{ haiku.as_br|safe }}</div></br>
     {% if game.current_turn.still_waiting %}
         Waiting for {{ game.pending_players|length }} other players.
+        <h3>Submitted so far:</h3>
     {% else %}
         Waiting for judge
+        <h3>Haiku Submitted:</h3>
+    {% endif %}
+
+    {% if game.current_turn.haiku_set.exists %}
+    <ul id="haiku-list">
+        {% for haiku in game.current_turn.haiku_set.all %}
+        <li class="haiku">{{ haiku.as_br|safe }}</li>
+        {% endfor %}
+    </ul>
     {% endif %}
 {% endblock %}
