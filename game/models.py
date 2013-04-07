@@ -162,6 +162,21 @@ class Player(models.Model):
         pot7 = self.game.available_phrases().filter(syllables=7)
         return pot5.count() >= 2 and pot7 >= 1
 
+    def is_judge(self):
+        return self.game.judge == self
+
+    def is_composing(self):
+        return self in self.game.pending_players()
+
+    def css_classes(self):
+        classes = []
+        if self.is_judge():
+            classes.append("judge")
+        if self.is_composing():
+            classes.append("composing")
+
+        return " ".join(classes)
+
     def next_phrase(self, syllables):
         potentials = self.game.available_phrases().filter(syllables=syllables).order_by('?')
         if potentials:

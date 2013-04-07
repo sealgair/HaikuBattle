@@ -143,6 +143,20 @@ def game(request, game_id):
         return redirect(reverse(build_haiku, kwargs={'game_id': game_id}))
 
 @login_required
+def game_update(request, game_id):
+    game = get_object_or_404(Game, id=game_id)
+    data = {
+        'turn_id': game.current_turn.id,
+        'waiting_for': game.current_turn.waiting_count(),
+        'players': [{
+            'id': player.id,
+            'composing': player.is_composing(),
+            'judge': player.is_judge(),
+        } for player in game.players.all()]
+    }
+    return HttpResponse(json.dumps(data), mimetype="application/json")
+
+@login_required
 def turn(request, turn_id):
     turn = get_object_or_404(Turn, id=turn_id)
     context = {

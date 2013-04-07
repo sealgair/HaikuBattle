@@ -16,6 +16,15 @@
         font-weight: bold;
         color: #8b0000;
     }
+    .judge:after {
+        content: " (judge)"
+    }
+    .composing {
+        color: #000066;
+    }
+    .composing:after {
+        content: " (composing...)"
+    }
     .turn-num {
         margin-bottom: 0;
     }
@@ -43,18 +52,18 @@
     <h3>Players:</h3>
     <ul>
     {% for player in game.players.all %}
-        {% if game.judge == player %}
-        <li class="judge">{{ player.user.username }}[{{ player.score }}] (judge)</li>
-        {% else %}
-        <li>{{ player.user.username }}[{{ player.score }}]{% if player in game.pending_players %} (composing...){% endif %}</li>
-        {% endif %}
+        <li id="player_{{ player.id }}" class="{{player.css_classes}}">
+            {{ player.user.username }}[{{ player.score }}]
+        </li>
     {% endfor %}
     </ul>
     {% if game.last_winning_haiku %}
     <hr/>
     Winners:
     {% for turn in game.past_turns %}
-        <h4 class="turn-num"><a href="{% url game.views.turn turn_id=turn.id %}">Turn {{ turn.number }}:</a></h4>
+        <h4 id="turn_{{ turn.id }}" class="turn-num">
+            <a href="{% url game.views.turn turn_id=turn.id %}">Turn {{ turn.number }}:</a>
+        </h4>
         <div class="haiku">
         {{ turn.winner.as_br|safe }}
         <span class="author">{{ turn.winner.player.user.username }}</span>
@@ -67,4 +76,41 @@
     {% block game_content %}
     {% endblock %}
 </div>
+{% endblock %}
+
+{% block extrabody %}
+<script>
+current_turn_id = {{ game.current_turn.id }};
+function update_game() {
+    $.ajax({
+        url: "{% url game.views.game_update game_id=game.id %}",
+        dataType: "json",
+        contentType: "application/json",
+        success: function(data) {
+            if (data['turn_id'] == current_turn_id) {
+                // turn hasn't progressed, so update page data
+                $(data['players']).each(function(index, value) {
+                    var player = $("#player_"+value['id']);
+                    if (value['judge']) {
+                        player.addClass('judge');
+                    } else {
+                        player.removeClass('judge');
+                    }
+                    if (value['composing']) {
+                        player.addClass('composing');
+                    } else {
+                        player.removeClass('composing');
+                    }
+                });
+            } else {
+                // turn has progressed, so reload the page
+                document.location.reload();
+            }
+        }
+    });
+}
+$(function() {
+    window.setInterval(update_game, 5*1000);
+});
+</script>
 {% endblock %}
