@@ -8,7 +8,7 @@ SYLLABLE_AMOUNTS = {
     7: 8
 }
 
-MAX_SCORE = 5
+MAX_SCORE = 50
 
 class Dictionary(models.Model):
     """
@@ -189,7 +189,6 @@ class Player(models.Model):
                     new_phrase = self.next_phrase(s)
                     if new_phrase:
                         self.hand.add(new_phrase)
-                        self.game.seen_phrases.add(new_phrase)
                     else: return
 
     def other_players(self):
@@ -256,6 +255,14 @@ class Haiku(models.Model):
         ]
         ordering = ['?']
 
+    @property
+    def game(self):
+        return self.turn.game
+
+    @property
+    def phrases(self):
+        return [self.phrase1, self.phrase2, self.phrase3]
+
     def save(self, *args, **kwargs):
         created = not self.pk
         try: self.turn
@@ -264,6 +271,6 @@ class Haiku(models.Model):
         super(Haiku, self).save(*args, **kwargs)
 
         if created:
-            self.player.hand.remove(self.phrase1)
-            self.player.hand.remove(self.phrase2)
-            self.player.hand.remove(self.phrase3)
+            for phrase in self.phrases:
+                self.player.hand.remove(phrase)
+                self.game.seen_phrases.add(phrase)
