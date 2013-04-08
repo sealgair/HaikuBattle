@@ -79,6 +79,7 @@
 {% endblock %}
 
 {% block extrabody %}
+{{ block.super }}
 <script>
 current_turn_id = {{ game.current_turn.id }};
 function update_game() {
@@ -87,29 +88,33 @@ function update_game() {
         dataType: "json",
         contentType: "application/json",
         success: function(data) {
-            if (data['turn_id'] == current_turn_id) {
-                // turn hasn't progressed, so update page data
-                $(data['players']).each(function(index, value) {
-                    var player = $("#player_"+value['id']);
-                    if (value['judge']) {
-                        player.addClass('judge');
-                    } else {
-                        player.removeClass('judge');
-                    }
-                    if (value['composing']) {
-                        player.addClass('composing');
-                    } else {
-                        player.removeClass('composing');
-                    }
-                });
-            } else {
-                // turn has progressed, so reload the page
-                document.location.reload();
-            }
+            $("body").trigger("game_update", data);
         }
     });
 }
 $(function() {
+    $("body").on("game_update", function(event, data){
+        if (data['turn_id'] == current_turn_id) {
+            // turn hasn't progressed, so update page data
+            $(data['players']).each(function(index, value) {
+                var player = $("#player_"+value['id']);
+                if (value['judge']) {
+                    player.addClass('judge');
+                } else {
+                    player.removeClass('judge');
+                }
+                if (value['composing']) {
+                    player.addClass('composing');
+                } else {
+                    player.removeClass('composing');
+                }
+            });
+        } else {
+            // turn has progressed, so reload the page
+            document.location.reload();
+        }
+        return false;
+    });
     window.setInterval(update_game, 5*1000);
 });
 </script>

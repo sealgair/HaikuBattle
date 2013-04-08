@@ -3,7 +3,7 @@
 {% block game_content %}
     <h2>Pick The Best Haiku</h2>
     {% if game.current_turn.still_waiting %}
-        Waiting for {{ game.current_turn.waiting_count }} players.
+        Waiting for <span id="waiting_for">{{ game.current_turn.waiting_count }}</span> players.
     {% else %}
     <form method="post" action=""> {% csrf_token %}
         <ul>
@@ -12,4 +12,23 @@
         <input type=submit value="This one"/>
     </form>
     {% endif %}
+{% endblock %}
+
+{% block extrabody %}
+{{ block.super }}
+{% if game.current_turn.still_waiting %}
+<script>
+$(function (){
+    $("body").on("game_update", function(event, data){
+        if (data['waiting_for'] == 0) {
+            // now it's time to judge, so refresh the page
+            document.location.reload();
+        } else {
+            $("#waiting_for").text(data['waiting_for']);
+        }
+        return false;
+    });
+});
+</script>
+{% endif %}
 {% endblock %}
