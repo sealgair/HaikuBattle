@@ -61,7 +61,9 @@
             <a href="{% url friends.views.add_friend %}">Find Friends</a>
         </span>
         <span class="header_block">
-            <a href="{% url friends.views.confirm_friend %}">Confirm Friends</a>
+            <a href="{% url friends.views.confirm_friend %}">Confirm Friends
+                {% if confirm_friend_count %}<b>({{ confirm_friend_count }})</b>{% endif %}
+            </a>
         </span>
     </div>
 
@@ -69,7 +71,7 @@
     {% if messages %}
     <ul class="messages">
         {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
         {% endfor %}
     </ul>
     {% endif %}

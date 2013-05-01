@@ -106,6 +106,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
     "django.core.context_processors.request",
+    "friends.context_processors.friend_requests",
 )
 
 ROOT_URLCONF = 'haikubattle.urls'
