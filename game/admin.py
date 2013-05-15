@@ -6,12 +6,8 @@ from game.models import Dictionary, Phrase, Game, Player
 class PhraseAdmin(admin.ModelAdmin):
     list_display = ['id', 'text', 'syllables', 'dictionary']
     list_editable = ['text', 'dictionary']
-
-class PhraseInline(admin.TabularInline):
-    model = Phrase
-
-class DictionaryAdmin(admin.ModelAdmin):
-    inlines = [PhraseInline ]
+    list_filter = ['dictionary']
+    search_fields = ['text']
 
 class PlayerInline(admin.TabularInline):
     model = Player
@@ -20,6 +16,6 @@ class PlayerInline(admin.TabularInline):
 class GameAdmin(admin.ModelAdmin):
     inlines = [PlayerInline]
 
-admin.site.register(Dictionary, DictionaryAdmin)
+admin.site.register(Dictionary)
 admin.site.register(Game, GameAdmin)
 admin.site.register(Phrase, PhraseAdmin)
