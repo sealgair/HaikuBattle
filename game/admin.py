@@ -6,7 +6,7 @@ from game.models import Dictionary, Phrase, Game, Player
 class PhraseAdmin(admin.ModelAdmin):
     list_display = ['id', 'text', 'syllables', 'dictionary']
     list_editable = ['text', 'dictionary']
-    list_filter = ['dictionary', 'syllables']
+    list_filter = ['dictionary__name', 'syllables']
     search_fields = ['text']
 
 class PlayerInline(admin.TabularInline):
