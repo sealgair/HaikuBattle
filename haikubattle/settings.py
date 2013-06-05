@@ -140,6 +140,12 @@ INSTALLED_APPS = (
     'registration',
     'friends',
     'south',
+    'djanrain',
+)
+
+AUTHENTICATION_BACKENDS = (
+    'djanrain.backends.DjanrainAuthBackend',
+    'django.contrib.auth.backends.ModelBackend'
 )
 
 """
@@ -185,6 +191,7 @@ LOGGING = {
     }
 }
 
+LOGIN_URL = '/auth/login/'
 LOGIN_REDIRECT_URL = '/'
 
 try:

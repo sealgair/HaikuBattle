@@ -10,7 +10,7 @@ from dashboard.forms import AccountInfoForm
 from game.models import Player, Game
 from friends.models import Friendship
 
-@login_required(login_url='/accounts/login/')
+@login_required
 def player_dashboard(request):
     """
     """
@@ -47,6 +47,7 @@ def player_dashboard(request):
     return response
 
 
+@login_required
 def account_info(request):
     context = {}
     if request.method == 'POST':

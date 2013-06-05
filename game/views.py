@@ -55,6 +55,8 @@ class ChooseHaikuForm(forms.Form):
     def save(self):
         self.turn.advance(self.cleaned_data['choices'])
 
+
+@login_required
 def build_haiku(request, game_id):
     game = get_object_or_404(Game, id=game_id)
     player = get_object_or_404(Player, game=game, user=request.user.id)
@@ -96,6 +98,8 @@ def build_haiku(request, game_id):
         context_instance=RequestContext(request, context)
     )
 
+
+@login_required
 def play_random(request, game_id):
     if request.method == "POST":
         game = get_object_or_404(Game, id=game_id)
@@ -103,6 +107,8 @@ def play_random(request, game_id):
         player.play_random()
     return redirect(reverse('game.views.game', kwargs={'game_id': game_id}))
 
+
+@login_required
 def judge(request, game_id):
     game = get_object_or_404(Game, id=game_id)
     turn = game.current_turn
@@ -123,6 +129,7 @@ def judge(request, game_id):
         "game/judge_waiting.html",
         context_instance=RequestContext(request, context)
     )
+
 
 @login_required
 def game(request, game_id):
@@ -247,6 +254,7 @@ def add_hotseat_player(request, game_id):
         })
     )
 
+
 @login_required
 def remove_hotseat_player(request, game_id, user_id):
     hotseat = request.session.get('hotseat', [])
@@ -256,6 +264,7 @@ def remove_hotseat_player(request, game_id, user_id):
             request.session['hotseat'] = hotseat
             break
     return redirect(reverse('game.views.game', kwargs={'game_id': game_id}))
+
 
 @login_required
 def next_hotseat_player(request, game_id, user_id=None):
@@ -278,6 +287,7 @@ def next_hotseat_player(request, game_id, user_id=None):
         request.session['hotseat'] = hotseat
         messages.info(request, "It's {0}'s turn now".format(hs_user))
     return redirect(reverse('game.views.game', kwargs={'game_id': game_id}))
+
 
 def random_haiku(request, format="plain"):
     p1, p3 = Phrase.objects.filter(syllables=5).order_by('?')[0:2]

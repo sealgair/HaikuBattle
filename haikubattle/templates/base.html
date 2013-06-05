@@ -54,7 +54,7 @@
             </span>
         {% else %}
             <span class="header_block">
-                <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}">Log In</a>
+                <a href="{% url djanrain.views.login_view %}?next={{request.path}}">Log In</a>
             </span>
         {% endif %}
         <span class="header_block">
