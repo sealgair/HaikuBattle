@@ -7,4 +7,4 @@ ipython==0.13
 readline
 django-extensions
 south
-git+https://github.com/sealgair/djanrain.git
+git+https://github.com/sealgair/djanrain.git#egg=djanrain
