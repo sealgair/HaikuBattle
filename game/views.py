@@ -9,6 +9,7 @@ from django.shortcuts import get_object_or_404, render_to_response, redirect
 from django.template.context import RequestContext
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login
+from django.db.models import Count
 
 from friends.models import Friendship
 from game.models import Game, Player, Haiku, Turn, Phrase
@@ -293,11 +294,23 @@ def random_haiku(request, format="plain"):
     p1, p3 = Phrase.objects.filter(syllables=5).order_by('?')[0:2]
     p2 = Phrase.objects.filter(syllables=7).order_by('?')[0]
 
-    haiku = u"{0}\n{1}\n{2}".format(p1, p2, p3)
+    haiku = Haiku(phrase1=p1, phrase2=p2, phrase3=p3)
     if format == "json":
-        haiku = json.dumps({
-            'haiku': [str(p1), str(p2), str(p3)]
-        })
+        content = haiku.as_json()
+    else:
+        content = haiku.as_text()
 
-    return HttpResponse(haiku, content_type="text/{0}".format(format))
+    return HttpResponse(content, content_type="text/{0}".format(format))
 
+
+def random_winner(request, format="plain"):
+    game_pool = Game.objects.filter(turns__winner__isnull=False)
+    # todo: filter active
+    game = game_pool.order_by("?")[0]
+    haiku = game.last_winning_haiku()
+    if format == "json":
+        content = haiku.as_json()
+    else:
+        content = haiku.as_text()
+
+    return HttpResponse(content, content_type="text/{0}".format(format))

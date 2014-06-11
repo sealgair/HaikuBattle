@@ -1,3 +1,5 @@
+import json
+
 from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
@@ -233,6 +235,7 @@ class Player(models.Model):
     def __unicode__(self):
         return unicode(self.user)
 
+
 class Haiku(models.Model):
     """
     """
@@ -246,8 +249,32 @@ class Haiku(models.Model):
     def __unicode__(self):
         return u"{0} / {1} / {2}".format(self.phrase1, self.phrase2, self.phrase3)
 
+    @property
+    def phrases(self):
+        return self.phrase1, self.phrase2, self.phrase3
+
     def as_br(self):
-        return u"{0}<br/>{1}</br>{2}</br>".format(self.phrase1, self.phrase2, self.phrase3)
+        return u"{0}<br/>{1}</br>{2}</br>".format(*self.phrases)
+
+    def as_text(self):
+        text = "\n".join([str(p) for p in self.phrases])
+        try:
+            if self.player:
+                text += "\n\t-{}".format(self.player)
+        except Player.DoesNotExist:
+            pass
+        return text
+
+    def as_json(self, indent=2):
+        data = {
+            'haiku': [str(p) for p in self.phrases]
+        }
+        try:
+            if self.player:
+                data['author'] = str(self.player)
+        except Player.DoesNotExist:
+            pass
+        return json.dumps(data, indent=indent)
 
     class Meta:
         unique_together = [

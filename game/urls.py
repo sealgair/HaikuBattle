@@ -15,7 +15,11 @@ urlpatterns = patterns('game.views',
     url(r'^turn/(?P<turn_id>\d+)/', 'turn'),
     url(r'^add_hotseat_player/(?P<game_id>\d+)/', 'add_hotseat_player'),
     url(r'^remove_hotseat_player/(?P<game_id>\d+)/(?P<user_id>\d+)/', 'remove_hotseat_player'),
+
     url(r'^random_haiku/', 'random_haiku'),
     url(r'^random_haiku.json', 'random_haiku', kwargs={'format': 'json'}),
+
+    url(r'^random_winner/', 'random_winner'),
+    url(r'^random_winner.json', 'random_winner', kwargs={'format': 'json'}),
 )
 
