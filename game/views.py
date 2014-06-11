@@ -295,12 +295,7 @@ def random_haiku(request, format="plain"):
     p2 = Phrase.objects.filter(syllables=7).order_by('?')[0]
 
     haiku = Haiku(phrase1=p1, phrase2=p2, phrase3=p3)
-    if format == "json":
-        content = haiku.as_json()
-    else:
-        content = haiku.as_text()
-
-    return HttpResponse(content, content_type="text/{0}".format(format))
+    return HttpResponse(haiku.as_format(format), content_type="text/{0}".format(format))
 
 
 def random_winner(request, format="plain"):
@@ -308,9 +303,4 @@ def random_winner(request, format="plain"):
     # todo: filter active
     game = game_pool.order_by("?")[0]
     haiku = game.last_winning_haiku()
-    if format == "json":
-        content = haiku.as_json()
-    else:
-        content = haiku.as_text()
-
-    return HttpResponse(content, content_type="text/{0}".format(format))
+    return HttpResponse(haiku.as_format(format), content_type="text/{0}".format(format))

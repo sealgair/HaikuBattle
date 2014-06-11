@@ -256,11 +256,20 @@ class Haiku(models.Model):
     def as_br(self):
         return u"{0}<br/>{1}</br>{2}</br>".format(*self.phrases)
 
-    def as_text(self):
-        text = "\n".join([str(p) for p in self.phrases])
+    def as_html(self):
+        html = u"{0}<br/>{1}</br>{2}</br>".format(*self.phrases)
         try:
             if self.player:
-                text += "\n\t-{}".format(self.player)
+                html += u"<span class='attribution'>{}</span>".format(self.player)
+        except Player.DoesNotExist:
+            pass
+        return html
+
+    def as_text(self):
+        text = u"\n".join([str(p) for p in self.phrases])
+        try:
+            if self.player:
+                text += u"\n\t-{}".format(self.player)
         except Player.DoesNotExist:
             pass
         return text
@@ -275,6 +284,15 @@ class Haiku(models.Model):
         except Player.DoesNotExist:
             pass
         return json.dumps(data, indent=indent)
+
+    def as_format(self, fmt="plain"):
+        fmt = fmt.lower()
+        if fmt == "html":
+            return self.as_br()
+        elif fmt == "json":
+            return self.as_json()
+        else:
+            return self.as_text()
 
     class Meta:
         unique_together = [
