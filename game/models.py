@@ -288,7 +288,7 @@ class Haiku(models.Model):
     def as_format(self, fmt="plain"):
         fmt = fmt.lower()
         if fmt == "html":
-            return self.as_br()
+            return self.as_html()
         elif fmt == "json":
             return self.as_json()
         else:
