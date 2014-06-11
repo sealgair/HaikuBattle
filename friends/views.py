@@ -16,12 +16,13 @@ def add_friend(request):
     if request.method == "POST":
         search = request.POST['friend_search']
         try:
-            new_friend = User.objects.get(Q(email__iexact=search) | Q(username__iexact=search))
-            if new_friend in friends:
-                messages.info(request, "You're already friends with {0}.".format(new_friend.username))
-            else:
-                Friendship.objects.create(from_user=request.user, to_user=new_friend)
-                messages.info(request, "You have invited {0} to be friends with you.".format(new_friend.username))
+            new_friends = User.objects.filter(Q(email__iexact=search) | Q(username__iexact=search))
+            for new_friend in new_friends:
+                if new_friend in friends:
+                    messages.info(request, "You're already friends with {0}.".format(new_friend.username))
+                else:
+                    Friendship.objects.create(from_user=request.user, to_user=new_friend)
+                    messages.info(request, "You have invited {0} to be friends with you.".format(new_friend.username))
         except User.DoesNotExist:
             messages.info(request, "Couldn't find anybody called {0}.".format(search))
         except User.DoesNotExist:
